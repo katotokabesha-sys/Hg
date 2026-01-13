@@ -1,0 +1,2537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LB-K SMART - Boutique Intelligente Kolwezi</title>
+    
+    <!-- Métadonnées SEO améliorées -->
+    <meta name="description" content="Boutique LB-K SMART - Électronique, Mode, Accessoires, Produits Pharmaceutiques à Kolwezi, RDC. Commande sur mesure, livraison rapide, paiement sécurisé.">
+    <meta name="keywords" content="boutique, Kolwezi, RDC, électronique, mode, pharmacie, livraison, commande sur mesure, LB-K SMART">
+    <meta name="author" content="LB-K SMART">
+    <meta name="theme-color" content="#0a0a1a">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="LB-K SMART - Boutique Intelligente Kolwezi">
+    <meta property="og:description" content="Boutique LB-K SMART - Électronique, Mode, Accessoires, Produits Pharmaceutiques à Kolwezi, RDC">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/fluency/96/shopping-cart-loaded.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/96/shopping-cart-loaded.png">
+    
+    <!-- CSS Externes optimisés -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============ VARIABLES GLOBALES AMÉLIORÉES ============ */
+        :root {
+            /* Thème Futuriste par défaut */
+            --primary: #0a0a1a;
+            --secondary: #00f3ff;
+            --accent: #7b00ff;
+            --danger: #ff0066;
+            --success: #00ff9d;
+            --warning: #ffcc00;
+            --light: #f0f8ff;
+            --dark: #050510;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-dark: rgba(5, 5, 16, 0.95);
+            --shadow: 0 8px 32px rgba(0, 243, 255, 0.15);
+            --shadow-lg: 0 20px 60px rgba(0, 243, 255, 0.2);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-title: 'Orbitron', sans-serif;
+            --font-text: 'Exo 2', sans-serif;
+            --gradient: linear-gradient(135deg, var(--accent), var(--secondary));
+            --gradient-light: linear-gradient(135deg, rgba(123, 0, 255, 0.1), rgba(0, 243, 255, 0.1));
+        }
+
+        /* Thème Moderne */
+        .theme-moderne {
+            --primary: #ffffff;
+            --secondary: #2c3e50;
+            --accent: #3498db;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --light: #34495e;
+            --dark: #ecf0f1;
+            --glass: rgba(44, 62, 80, 0.05);
+            --glass-dark: rgba(236, 240, 241, 0.95);
+            --shadow: 0 8px 32px rgba(44, 62, 80, 0.1);
+            --shadow-lg: 0 20px 60px rgba(44, 62, 80, 0.15);
+            --gradient: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+
+        /* Thème Classique */
+        .theme-classique {
+            --primary: #f8f5f0;
+            --secondary: #8B4513;
+            --accent: #D2691E;
+            --danger: #8B0000;
+            --success: #228B22;
+            --warning: #DAA520;
+            --light: #5D4037;
+            --dark: #EFEBE9;
+            --glass: rgba(139, 69, 19, 0.05);
+            --glass-dark: rgba(248, 245, 240, 0.95);
+            --shadow: 0 8px 32px rgba(139, 69, 19, 0.1);
+            --shadow-lg: 0 20px 60px rgba(139, 69, 19, 0.15);
+            --gradient: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+
+        /* ============ RÉINITIALISATION ============ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-text);
+            background: var(--primary);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: var(--transition);
+            line-height: 1.6;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .float { animation: float 3s ease-in-out infinite; }
+        .pulse { animation: pulse 2s ease-in-out infinite; }
+        .slide-in { animation: slideIn 0.6s ease-out; }
+
+        /* ============ BARRE DE NAVIGATION FIXE AVANCÉE ============ */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 1rem 2rem;
+            transition: var(--transition);
+        }
+
+        .theme-moderne .main-header {
+            background: rgba(44, 62, 80, 0.95);
+            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .theme-classique .main-header {
+            background: rgba(93, 64, 55, 0.95);
+            border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        /* Logo amélioré */
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            letter-spacing: 1px;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px var(--secondary));
+        }
+
+        /* Menu Hamburger amélioré */
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+            background: transparent;
+            border: none;
+            position: relative;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Barre de Recherche améliorée */
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 50px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-family: var(--font-text);
+            font-size: 1rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-moderne .search-input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .theme-classique .search-input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #8B4513;
+            color: #5D4037;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            pointer-events: none;
+        }
+
+        /* Bouton Panier amélioré */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: var(--transition);
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .cart-icon:hover {
+            background: rgba(0, 243, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(255, 0, 102, 0.3);
+        }
+
+        /* ============ BOUTONS FLOTTANTS ULTRA-MODERNES ============ */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .floating-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gradient);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .floating-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .floating-button:hover::before {
+            left: 100%;
+        }
+
+        .floating-button:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .floating-button.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .floating-button.ai {
+            background: linear-gradient(135deg, #7b00ff, #ff0066);
+        }
+
+        .floating-button.admin {
+            background: linear-gradient(135deg, #ffaa00, #ff0066);
+        }
+
+        .floating-button.order {
+            background: linear-gradient(135deg, #00ff9d, #00f3ff);
+        }
+
+        .floating-tooltip {
+            position: absolute;
+            right: 80px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .floating-button:hover .floating-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============ CATALOGUE RESTRUCTURÉ ============ */
+        .catalog-container {
+            max-width: 1400px;
+            margin: 100px auto 0;
+            padding: 20px;
+        }
+
+        .boutique-section {
+            margin-bottom: 60px;
+            padding: 30px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        #betty-boutique {
+            border-left: 5px solid #4361ee;
+            background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+        }
+
+        #laurent-boutique {
+            border-left: 5px solid #ff6b6b;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffffff 100%);
+        }
+
+        .boutique-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .boutique-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-family: var(--font-title);
+        }
+
+        .boutique-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .boutique-tag {
+            display: inline-block;
+            background: #4361ee;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .boutique-slogan {
+            color: #666;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Grid des catégories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #4361ee;
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .subcategory-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .subcategory-list li {
+            padding: 5px 0;
+            color: #666;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .subcategory-list li:last-child {
+            border-bottom: none;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .category-disclaimer {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #856404;
+        }
+
+        /* Sections Mode */
+        .gender-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .gender-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .gender-subcategories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .subcategory-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .subcategory-card:hover {
+            background: #e9ecef;
+            transform: translateY(-3px);
+        }
+
+        .subcategory-card h4 {
+            color: #4361ee;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .subcategory-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+        }
+
+        .subcategory-card ul li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .style-tag, .size-tag {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        /* Autres catégories */
+        .other-categories {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f1f8ff;
+            border-radius: 15px;
+        }
+
+        .other-categories h3 {
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-mini-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .category-mini-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #4361ee;
+        }
+
+        .mini-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .category-mini-card h5 {
+            color: #333;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .category-mini-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Bouton retour */
+        .back-to-categories {
+            background: #4361ee;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-categories:hover {
+            background: #3a56d4;
+            transform: translateX(-5px);
+        }
+
+        #current-category-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4361ee;
+        }
+
+        /* ============ HERO SECTION AVEC CARROUSEL ============ */
+        .hero-section {
+            margin-top: 80px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-blend-mode: overlay;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            padding: 3rem 4rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--secondary);
+            max-width: 800px;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .slide-title {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+        }
+
+        .slide-description {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Contrôles du carrousel */
+        .carousel-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px var(--secondary);
+        }
+
+        /* ============ BOUTONS AMÉLIORÉS ============ */
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: black;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 243, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ============ SECTION ASSISTANCE ============ */
+        .assistance-section {
+            padding: 4rem 2rem;
+            background: var(--gradient-light);
+            margin: 4rem 0;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .assistance-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .assistance-card {
+            background: var(--glass-dark);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            backdrop-filter: blur(20px);
+        }
+
+        .assistance-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .assistance-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .assistance-card:hover .assistance-icon {
+            transform: scale(1.2);
+        }
+
+        .assistance-title {
+            color: var(--light);
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .assistance-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* ============ OVERLAY D'ADMIN AVANCÉ ============ */
+        .admin-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .admin-overlay.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .admin-panel {
+            background: var(--glass-dark);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 95%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid var(--secondary);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .admin-title {
+            color: var(--secondary);
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--success);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        /* Onglets Admin */
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .admin-tab {
+            padding: 14px 28px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-text);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .admin-tab:hover {
+            background: rgba(0, 243, 255, 0.1);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .admin-tab.active {
+            background: var(--gradient);
+            color: black;
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
+        }
+
+        /* Formulaires améliorés */
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-title);
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(0, 243, 255, 0.3);
+            border-radius: 10px;
+            color: var(--light);
+            font-family: var(--font-text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        /* ============ FOOTER AMÉLIORÉ ============ */
+        .main-footer {
+            background: #050510;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            font-family: var(--font-title);
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(8px);
+            border-bottom-color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 2rem 0 0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* ============ UTILITAIRES ============ */
+        .hidden {
+            display: none !important;
+        }
+
+        .visible {
+            display: block !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .p-1 { padding: 1rem; }
+        .p-2 { padding: 2rem; }
+        .p-3 { padding: 3rem; }
+
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: var(--glass-dark);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--secondary);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            z-index: 9999;
+            box-shadow: var(--shadow-lg);
+            transform: translateX(150%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 350px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-color: var(--success);
+        }
+
+        .notification.error {
+            border-color: var(--danger);
+        }
+
+        .notification.warning {
+            border-color: var(--warning);
+        }
+
+        .notification.info {
+            border-color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de Navigation -->
+    <header class="main-header">
+        <div class="nav-container">
+            <!-- Menu Hamburger -->
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menu de navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Logo -->
+            <a href="#" class="logo" onclick="scrollToTop()">
+                <i class="fas fa-bolt"></i> LB-K SMART
+            </a>
+
+            <!-- Barre de Recherche -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" 
+                       placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+            </div>
+
+            <!-- Panier -->
+            <div class="cart-icon" onclick="openCart()" aria-label="Ouvrir le panier">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartBadge" class="cart-badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Boutons Flottants -->
+    <div class="floating-buttons">
+        <button class="floating-button admin" onclick="openAdminLogin()" aria-label="Administration">
+            <i class="fas fa-cogs"></i>
+            <span class="floating-tooltip">Administration</span>
+        </button>
+        <button class="floating-button ai" onclick="openAIAssistant()" aria-label="Assistant IA">
+            <i class="fas fa-robot"></i>
+            <span class="floating-tooltip">Assistant IA</span>
+        </button>
+        <button class="floating-button whatsapp" onclick="openWhatsApp()" aria-label="Contact WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="floating-tooltip">WhatsApp</span>
+        </button>
+        <button class="floating-button order" onclick="quickOrder()" aria-label="Commande rapide">
+            <i class="fas fa-bolt"></i>
+            <span class="floating-tooltip">Commande rapide</span>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="carousel" id="carousel">
+            <!-- Slides seront ajoutées dynamiquement -->
+        </div>
+        <div class="carousel-controls" id="carouselControls">
+            <!-- Dots seront ajoutés dynamiquement -->
+        </div>
+    </section>
+
+    <!-- Catalogue Restructuré -->
+    <div class="catalog-container">
+        <!-- Boutique Betty Kabey Smart -->
+        <section class="boutique-section" id="betty-boutique">
+            <div class="boutique-header">
+                <h1 class="boutique-title">
+                    <span class="boutique-icon">🔌</span>
+                    Betty Kabey Smart
+                    <span class="boutique-tag">Votre boutique incontournable</span>
+                </h1>
+                <p class="boutique-slogan">Smart Solutions & Accessoires</p>
+            </div>
+            
+            <!-- Catégories Betty -->
+            <div class="categories-grid">
+                <!-- Accessoires électriques -->
+                <div class="category-card" onclick="showCategoryProducts('betty', 'accessoires-electriques')">
+                    <div class="category-icon">⚡</div>
+                    <h3>Accessoires électriques</h3>
+                    <ul class="subcategory-list">
+                        <li>Groupes solaires</li>
+                        <li>Panneaux solaires</li>
+                        <li>Prises et multiprises</li>
+                    </ul>
+                    <span class="category-badge">Nouveau</span>
+                </div>
+                
+                <!-- Accessoires électroniques -->
+                <div class="category-card" onclick="showCategoryProducts('betty', 'accessoires-electroniques')">
+                    <div class="category-icon">📱</div>
+                    <h3>Accessoires électroniques</h3>
+                    <ul class="subcategory-list">
+                        <li>Écouteurs Bluetooth</li>
+                        <li>Power banks</li>
+                        <li>Chargeurs rapides</li>
+                        <li>Montres intelligentes</li>
+                    </ul>
+                </div>
+                
+                <!-- Accessoires automobiles -->
+                <div class="category-card" onclick="showCategoryProducts('betty', 'accessoires-automobiles')">
+                    <div class="category-icon">🚗</div>
+                    <h3>Accessoires automobiles</h3>
+                    <ul class="subcategory-list">
+                        <li>Parfums véhicules</li>
+                        <li>Tapis & housses</li>
+                        <li>Radios tactiles</li>
+                        <li>Pièces automobiles</li>
+                    </ul>
+                </div>
+                
+                <!-- Produits pharmaceutiques -->
+                <div class="category-card" onclick="showCategoryProducts('betty', 'produits-pharmaceutiques')">
+                    <div class="category-icon">💊</div>
+                    <h3>Produits pharmaceutiques</h3>
+                    <ul class="subcategory-list">
+                        <li>Produits dentaires</li>
+                        <li>Produits pour l'estomac</li>
+                        <li>Soins hémorroïdaires</li>
+                        <li>Produits tension</li>
+                    </ul>
+                    <div class="category-disclaimer">
+                        ⚠️ Consultez un professionnel de santé
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Boutique Laurent Kabesha Smart -->
+        <section class="boutique-section" id="laurent-boutique">
+            <div class="boutique-header">
+                <h1 class="boutique-title">
+                    <span class="boutique-icon">👗</span>
+                    Laurent Kabesha Smart
+                    <span class="boutique-tag">Style • Qualité • Tendance</span>
+                </h1>
+                <p class="boutique-slogan">Habits & Accessoires – Homme & Femme</p>
+            </div>
+            
+            <!-- Mode Homme -->
+            <div class="gender-section">
+                <h2 class="gender-title">👔 Mode Homme</h2>
+                <div class="gender-subcategories">
+                    <div class="subcategory-card" onclick="showCategoryProducts('laurent', 'mode-homme', 'vetements')">
+                        <h4>Vêtements Homme</h4>
+                        <ul>
+                            <li>T-shirts, polos et chemises</li>
+                            <li>Pantalons, jeans et shorts</li>
+                            <li>Ensembles décontractés</li>
+                            <li>Vestes et blousons</li>
+                            <li>Sous-vêtements</li>
+                        </ul>
+                        <div class="style-tag">Styles modernes, classiques et tendance</div>
+                        <div class="size-tag">Tailles variées disponibles</div>
+                    </div>
+                    
+                    <div class="subcategory-card" onclick="showCategoryProducts('laurent', 'mode-homme', 'accessoires')">
+                        <h4>Accessoires Homme</h4>
+                        <ul>
+                            <li>Montres et bracelets</li>
+                            <li>Ceintures et portefeuilles</li>
+                            <li>Lunettes de soleil</li>
+                            <li>Chaussures et sandales</li>
+                            <li>Parfums homme</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mode Femme -->
+            <div class="gender-section">
+                <h2 class="gender-title">👗 Mode Femme</h2>
+                <div class="gender-subcategories">
+                    <div class="subcategory-card" onclick="showCategoryProducts('laurent', 'mode-femme', 'vetements')">
+                        <h4>Vêtements Femme</h4>
+                        <ul>
+                            <li>Robes (courtes, longues, soirée)</li>
+                            <li>Ensembles et tenues chic</li>
+                            <li>Jupes, pantalons et jeans</li>
+                            <li>T-shirts, tops et chemisiers</li>
+                            <li>Sous-vêtements de confort</li>
+                        </ul>
+                        <div class="style-tag">Styles élégants, modernes et tendance</div>
+                        <div class="size-tag">Tailles variées selon disponibilité</div>
+                    </div>
+                    
+                    <div class="subcategory-card" onclick="showCategoryProducts('laurent', 'mode-femme', 'accessoires')">
+                        <h4>Accessoires Femme</h4>
+                        <ul>
+                            <li>Sacs à main et pochettes</li>
+                            <li>Montres et bijoux</li>
+                            <li>Lunettes de soleil</li>
+                            <li>Chaussures et sandales</li>
+                            <li>Parfums femme</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Autres catégories Laurent -->
+            <div class="other-categories">
+                <h3>Autres catégories de produits</h3>
+                <div class="category-grid">
+                    <div class="category-mini-card" onclick="showCategoryProducts('laurent', 'produits-cosmetiques')">
+                        <div class="mini-icon">💄</div>
+                        <h5>Cosmétiques & hygiène</h5>
+                        <p>Savons, crèmes, gels, shampoings...</p>
+                    </div>
+                    
+                    <div class="category-mini-card" onclick="showCategoryProducts('laurent', 'produits-menagers')">
+                        <div class="mini-icon">🧽</div>
+                        <h5>Produits ménagers</h5>
+                        <p>Détergents, désinfectants, produits vaisselle...</p>
+                    </div>
+                    
+                    <div class="category-mini-card" onclick="showCategoryProducts('laurent', 'accessoires-electromenagers')">
+                        <div class="mini-icon">🏠</div>
+                        <h5>Électroménager</h5>
+                        <p>Salon, cuisine, chambre...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Zone d'affichage des produits -->
+    <div id="products-display-section" style="display: none;">
+        <button class="back-to-categories" onclick="showCategories()">
+            ← Retour aux catégories
+        </button>
+        <div id="current-category-title"></div>
+        <div id="products-grid" class="products-grid"></div>
+    </div>
+
+    <!-- Assistance -->
+    <section class="assistance-section">
+        <div class="assistance-grid">
+            <!-- WhatsApp -->
+            <div class="assistance-card" onclick="openWhatsApp()">
+                <div class="assistance-icon" style="color: #25D366;">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3 class="assistance-title">WhatsApp Business</h3>
+                <p class="assistance-description">
+                    Commandes directes via WhatsApp. Réponse rapide garantie dans les 5 minutes.
+                </p>
+                <div style="text-align: left; margin-bottom: 2rem;">
+                    <p><i class="fas fa-female"></i> Betty: +243 97 145 5335</p>
+                    <p><i class="fas fa-male"></i> Laurent: +243 82 293 7321</p>
+                </div>
+                <button class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Envoyer un message
+                </button>
+            </div>
+
+            <!-- IA Assistant -->
+            <div class="assistance-card" onclick="openAIAssistant()">
+                <div class="assistance-icon" style="color: var(--secondary);">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="assistance-title">Assistant IA Intelligent</h3>
+                <p class="assistance-description">
+                    Réponses instantanées à vos questions. Aide à la commande et recommandations personnalisées.
+                </p>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-comments"></i> Poser une question
+                </button>
+            </div>
+
+            <!-- Support -->
+            <div class="assistance-card" onclick="openAdminLogin()">
+                <div class="assistance-icon" style="color: var(--accent);">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="assistance-title">Support 24/7</h3>
+                <p class="assistance-description">
+                    Assistance technique et commerciale. Panneau admin pour gestion complète.
+                </p>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-cogs"></i> Support Admin
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <!-- À propos -->
+            <div class="footer-section">
+                <h3>À PROPOS</h3>
+                <p class="footer-text">
+                    LB-K SMART est une boutique en ligne premium basée à Kolwezi, RDC. 
+                    Nous offrons des produits de qualité avec un service personnalisé 
+                    et une livraison fiable dans toute la RDC.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Liens rapides -->
+            <div class="footer-section">
+                <h3>LIENS RAPIDES</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="scrollToTop()"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="#" onclick="showCatalog()"><i class="fas fa-store"></i> Catalogue</a></li>
+                    <li><a href="#" onclick="showDeliveryInfo()"><i class="fas fa-shipping-fast"></i> Livraison</a></li>
+                    <li><a href="#" onclick="showPricingInfo('air')"><i class="fas fa-plane"></i> Tarifs Aérien</a></li>
+                    <li><a href="#" onclick="showPricingInfo('sea')"><i class="fas fa-ship"></i> Tarifs Maritime</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>CONTACT</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+243822937321"><i class="fas fa-phone"></i> +243 82 293 7321</a></li>
+                    <li><a href="mailto:contact@lbksmart.com"><i class="fas fa-envelope"></i> contact@lbksmart.com</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Kolwezi, RDC</a></li>
+                    <li><a href="#" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section">
+                <h3>NEWSLETTER</h3>
+                <p class="footer-text">
+                    Inscrivez-vous pour recevoir nos offres exclusives et nouveautés.
+                </p>
+                <div style="margin-top: 1.5rem;">
+                    <input type="email" placeholder="Votre email" 
+                           style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(0,243,255,0.3); background: rgba(255,255,255,0.05); color: white; margin-bottom: 10px;">
+                    <button class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> S'abonner
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2024 LB-K SMART. Tous droits réservés.</p>
+            <p>
+                <i class="fas fa-shopping-cart"></i> COMMANDE SUR MESURE – QUALITÉ & FIABILITÉ GARANTIES
+            </p>
+        </div>
+    </footer>
+
+    <!-- Panel Admin -->
+    <div class="admin-overlay" id="adminOverlay">
+        <div class="admin-panel" id="adminPanel">
+            <!-- Contenu admin sera ajouté dynamiquement -->
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification hidden" id="notification"></div>
+
+    <!-- Script principal -->
+    <script>
+        // ================= CONFIGURATION GLOBALE =================
+        const SITE_CONFIG = {
+            adminPassword: btoa("1234" + "LBK_SALT"), // Sécurisé
+            siteName: "LB-K SMART",
+            onlineUsers: 0,
+            cart: [],
+            lastUpdated: new Date().toISOString(),
+            
+            // Structure des catégories
+            categories: {
+                betty: {
+                    name: "Betty Kabey Smart",
+                    categories: {
+                        "accessoires-electriques": {
+                            name: "Accessoires électriques",
+                            subcategories: [
+                                "Groupes solaires",
+                                "Panneaux solaires", 
+                                "Prises et multiprises électriques"
+                            ]
+                        },
+                        "accessoires-electroniques": {
+                            name: "Accessoires électroniques",
+                            subcategories: [
+                                "Écouteurs filaires et Bluetooth",
+                                "Power banks haute capacité",
+                                "Chargeurs rapides USB / Type-C",
+                                "Montres et bracelets intelligents",
+                                "Lunettes et bagues intelligentes",
+                                "Ordinateurs et accessoires informatiques"
+                            ]
+                        },
+                        "accessoires-automobiles": {
+                            name: "Accessoires automobiles",
+                            subcategories: [
+                                "Parfums pour véhicules",
+                                "Tapis, housses de sièges et textiles auto",
+                                "Radios tactiles, caméras et alarmes",
+                                "Pièces automobiles (Ford, Toyota, Mazda, Mercedes, etc.)"
+                            ]
+                        },
+                        "produits-pharmaceutiques": {
+                            name: "Produits pharmaceutiques",
+                            subcategories: [
+                                "Produits dentaires",
+                                "Produits pour l'estomac",
+                                "Produits hémorroïdaires",
+                                "Produits pour la tension artérielle"
+                            ],
+                            disclaimer: "⚠️ Pour toute situation sérieuse, veuillez consulter un professionnel de santé."
+                        }
+                    }
+                },
+                
+                laurent: {
+                    name: "Laurent Kabesha Smart",
+                    categories: {
+                        "mode-homme": {
+                            name: "Mode Homme",
+                            subcategories: {
+                                "vetements": {
+                                    name: "Vêtements Homme",
+                                    items: [
+                                        "T-shirts, polos et chemises",
+                                        "Pantalons, jeans et shorts",
+                                        "Ensembles et tenues décontractées",
+                                        "Vestes et blousons",
+                                        "Sous-vêtements et vêtements confort"
+                                    ]
+                                },
+                                "accessoires": {
+                                    name: "Accessoires Homme",
+                                    items: [
+                                        "Montres et bracelets",
+                                        "Ceintures et portefeuilles",
+                                        "Lunettes de soleil",
+                                        "Chaussures et sandales",
+                                        "Parfums homme"
+                                    ]
+                                }
+                            }
+                        },
+                        
+                        "mode-femme": {
+                            name: "Mode Femme",
+                            subcategories: {
+                                "vetements": {
+                                    name: "Vêtements Femme",
+                                    items: [
+                                        "Robes (courtes, longues, soirée)",
+                                        "Ensembles et tenues chic",
+                                        "Jupes, pantalons et jeans",
+                                        "T-shirts, tops et chemisiers",
+                                        "Sous-vêtements et vêtements de confort"
+                                    ]
+                                },
+                                "accessoires": {
+                                    name: "Accessoires Femme",
+                                    items: [
+                                        "Sacs à main et pochettes",
+                                        "Montres et bijoux (colliers, bracelets, bagues)",
+                                        "Lunettes de soleil",
+                                        "Chaussures et sandales",
+                                        "Parfums femme"
+                                    ]
+                                }
+                            }
+                        },
+                        
+                        "produits-cosmetiques": {
+                            name: "Produits cosmétiques",
+                            subcategories: [
+                                "Savon doux pour le corps",
+                                "Crème hydratante",
+                                "Gel douche parfumé",
+                                "Shampoing revitalisant",
+                                "Lait corporel nourrissant",
+                                "Déodorant roll-on",
+                                "Brosses et peignes"
+                            ]
+                        },
+                        
+                        "produits-menagers": {
+                            name: "Produits ménagers",
+                            subcategories: [
+                                "Détergents multi-surfaces",
+                                "Savon liquide vaisselle",
+                                "Désinfectants multi-usages",
+                                "Javel blanche",
+                                "Éponges et chiffons microfibres",
+                                "Spray vitres",
+                                "Poudre à laver"
+                            ]
+                        },
+                        
+                        "accessoires-electromenagers": {
+                            name: "Accessoires électroménagers",
+                            subcategories: {
+                                "salon": [
+                                    "Ventilateurs",
+                                    "Lampes et accessoires"
+                                ],
+                                "cuisine": [
+                                    "Mixeurs",
+                                    "Plaques",
+                                    "Petits appareils"
+                                ],
+                                "chambre": [
+                                    "Lampes",
+                                    "Ventilateurs",
+                                    "Accessoires"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            
+            // Base de données produits
+            products: {
+                betty: [],
+                laurent: []
+            },
+            
+            // Carrousel dynamique
+            carousel: [
+                {
+                    title: "NOUVELLE COLLECTION 2024",
+                    description: "Technologie & Mode à Kolwezi - Découvrez nos dernières arrivées",
+                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    link: "#"
+                },
+                {
+                    title: "LIVRAISON RAPIDE",
+                    description: "Partout en RDC - Délais garantis et service fiable",
+                    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    link: "#"
+                },
+                {
+                    title: "PAIEMENT SÉCURISÉ",
+                    description: "Mobile Money, IllicoCash - Transactions 100% sécurisées",
+                    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    link: "#"
+                }
+            ]
+        };
+
+        // ================= INITIALISATION =================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadConfig();
+            initUsers();
+            initCarousel();
+            initProducts();
+            initCart();
+            initSearch();
+            initEvents();
+            showNotification('Bienvenue sur LB-K SMART !', 'success');
+        });
+
+        // ================= GESTION DES DONNÉES =================
+        function loadConfig() {
+            const saved = localStorage.getItem('LBK_SMART_CONFIG');
+            if (saved) {
+                const config = JSON.parse(saved);
+                Object.assign(SITE_CONFIG, config);
+                console.log('Configuration chargée');
+            } else {
+                generateSampleProducts();
+                saveConfig();
+            }
+        }
+
+        function saveConfig() {
+            SITE_CONFIG.lastUpdated = new Date().toISOString();
+            localStorage.setItem('LBK_SMART_CONFIG', JSON.stringify(SITE_CONFIG));
+            console.log('Configuration sauvegardée');
+        }
+
+        // ================= UTILITAIRES =================
+        function hashPassword(password) {
+            return btoa(password + "LBK_SALT");
+        }
+
+        function checkAdminLogin(inputPassword) {
+            const hashedInput = hashPassword(inputPassword);
+            return hashedInput === SITE_CONFIG.adminPassword;
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            if (!notification) return;
+            
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.remove('hidden');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 400);
+            }, 3000);
+        }
+
+        // ================= GESTION DES UTILISATEURS =================
+        function initUsers() {
+            SITE_CONFIG.onlineUsers = Math.floor(Math.random() * 20) + 5;
+            setInterval(() => {
+                SITE_CONFIG.onlineUsers += Math.floor(Math.random() * 3) - 1;
+                if (SITE_CONFIG.onlineUsers < 1) SITE_CONFIG.onlineUsers = 1;
+                updateUsersIndicator();
+            }, 30000);
+        }
+
+        function updateUsersIndicator() {
+            // Implementation simplifiée
+        }
+
+        // ================= CARROUSEL DYNAMIQUE =================
+        function initCarousel() {
+            const carousel = document.getElementById('carousel');
+            const controls = document.getElementById('carouselControls');
+            
+            if (!carousel || !controls) return;
+            
+            let slidesHtml = '';
+            let dotsHtml = '';
+            
+            SITE_CONFIG.carousel.forEach((slide, index) => {
+                slidesHtml += `
+                    <div class="carousel-slide ${index === 0 ? 'active' : ''}" 
+                         style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${slide.image}')">
+                        <div class="slide-content">
+                            <h2 class="slide-title">${slide.title}</h2>
+                            <p class="slide-description">${slide.description}</p>
+                            <button class="btn btn-primary" onclick="showCategories()" style="margin-top: 2rem;">
+                                <i class="fas fa-shopping-bag"></i> Découvrir le Catalogue
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                dotsHtml += `
+                    <div class="carousel-dot ${index === 0 ? 'active' : ''}" 
+                         onclick="goToSlide(${index})"></div>
+                `;
+            });
+            
+            carousel.innerHTML = slidesHtml;
+            controls.innerHTML = dotsHtml;
+            
+            startCarousel();
+        }
+
+        function startCarousel() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (slides.length === 0) return;
+            
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }, 5000);
+        }
+
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        // ================= GESTION DES PRODUITS =================
+        function generateSampleProducts() {
+            // Produits Betty
+            SITE_CONFIG.products.betty = [
+                {
+                    id: 101,
+                    name: "Power Bank 30000mAh",
+                    price: 25000,
+                    description: "Power bank haute capacité avec charge rapide",
+                    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400",
+                    category: "accessoires-electroniques",
+                    subcategory: "Power banks haute capacité",
+                    boutique: "betty",
+                    stock: 15,
+                    rating: 4.5
+                },
+                {
+                    id: 102,
+                    name: "Écouteurs Bluetooth",
+                    price: 15000,
+                    description: "Écouteurs sans fil avec réduction de bruit",
+                    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
+                    category: "accessoires-electroniques",
+                    subcategory: "Écouteurs filaires et Bluetooth",
+                    boutique: "betty",
+                    stock: 25,
+                    rating: 4.2
+                },
+                {
+                    id: 103,
+                    name: "Kit Médical Complet",
+                    price: 12000,
+                    description: "Trousse de premiers soins professionnelle",
+                    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400",
+                    category: "produits-pharmaceutiques",
+                    boutique: "betty",
+                    stock: 8,
+                    rating: 4.8
+                }
+            ];
+            
+            // Produits Laurent
+            SITE_CONFIG.products.laurent = [
+                {
+                    id: 201,
+                    name: "Robe de soirée élégante",
+                    price: 45000,
+                    description: "Robe longue pour occasions spéciales",
+                    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400",
+                    category: "mode-femme",
+                    subcategory: "vetements",
+                    type: "Robes (courtes, longues, soirée)",
+                    boutique: "laurent",
+                    stock: 8,
+                    sizes: ["S", "M", "L"],
+                    rating: 4.8
+                },
+                {
+                    id: 202,
+                    name: "Chemise homme en coton",
+                    price: 18000,
+                    description: "Chemise classique pour homme",
+                    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400",
+                    category: "mode-homme",
+                    subcategory: "vetements",
+                    type: "T-shirts, polos et chemises",
+                    boutique: "laurent",
+                    stock: 20,
+                    sizes: ["M", "L", "XL"],
+                    rating: 4.3
+                },
+                {
+                    id: 203,
+                    name: "Kit Cosmétique Premium",
+                    price: 25000,
+                    description: "Collection complète de soins beauté",
+                    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+                    category: "produits-cosmetiques",
+                    boutique: "laurent",
+                    stock: 12,
+                    rating: 4.6
+                }
+            ];
+        }
+
+        function initProducts() {
+            if (SITE_CONFIG.products.betty.length === 0 && 
+                SITE_CONFIG.products.laurent.length === 0) {
+                generateSampleProducts();
+                saveConfig();
+            }
+        }
+
+        // ================= NAVIGATION CATÉGORIES =================
+        function showCategoryProducts(boutique, category, subcategory = null) {
+            document.querySelector('.catalog-container').style.display = 'none';
+            document.getElementById('products-display-section').style.display = 'block';
+            
+            const categoryConfig = SITE_CONFIG.categories[boutique].categories[category];
+            let title = categoryConfig.name;
+            
+            if (subcategory && categoryConfig.subcategories[subcategory]) {
+                title += ` - ${categoryConfig.subcategories[subcategory].name}`;
+            }
+            
+            document.getElementById('current-category-title').textContent = title;
+            
+            // Filtrer produits
+            const products = SITE_CONFIG.products[boutique].filter(product => {
+                if (subcategory) {
+                    return product.category === category && product.subcategory === subcategory;
+                }
+                return product.category === category;
+            });
+            
+            displayProducts(products, boutique);
+        }
+
+        function showCategories() {
+            document.querySelector('.catalog-container').style.display = 'block';
+            document.getElementById('products-display-section').style.display = 'none';
+        }
+
+        function displayProducts(products, boutique) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            
+            if (products.length === 0) {
+                grid.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: #666;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
+                        <h3 style="color: #333;">Aucun produit dans cette catégorie</h3>
+                        <p>Les produits seront bientôt disponibles</p>
+                        <button class="btn btn-primary" onclick="showCategories()" style="margin-top: 2rem;">
+                            Voir d'autres catégories
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" 
+                         style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>${product.name}</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">${product.description}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 1.5rem; font-weight: bold; color: #4361ee;">
+                            ${product.price.toLocaleString()} FCFA
+                        </span>
+                        <button class="btn btn-primary" onclick="addToCart(${product.id}, '${boutique}')">
+                            <i class="fas fa-cart-plus"></i> Ajouter
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ================= GESTION DU PANIER =================
+        function initCart() {
+            const savedCart = localStorage.getItem('LBK_CART');
+            if (savedCart) {
+                SITE_CONFIG.cart = JSON.parse(savedCart);
+                updateCartBadge();
+            }
+        }
+
+        function addToCart(productId, boutique) {
+            const product = SITE_CONFIG.products[boutique].find(p => p.id == productId);
+            if (!product) return;
+            
+            if (product.stock < 1) {
+                showNotification('Ce produit est en rupture de stock!', 'error');
+                return;
+            }
+            
+            const cartItem = SITE_CONFIG.cart.find(item => 
+                item.id === productId && item.boutique === boutique
+            );
+            
+            if (cartItem) {
+                cartItem.quantity += 1;
+            } else {
+                SITE_CONFIG.cart.push({
+                    ...product,
+                    quantity: 1,
+                    addedAt: new Date().toISOString()
+                });
+            }
+            
+            product.stock -= 1;
+            
+            saveCart();
+            updateCartBadge();
+            showNotification(`${product.name} ajouté au panier!`, 'success');
+        }
+
+        function saveCart() {
+            localStorage.setItem('LBK_CART', JSON.stringify(SITE_CONFIG.cart));
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cartBadge');
+            if (badge) {
+                const totalItems = SITE_CONFIG.cart.reduce((sum, item) => sum + item.quantity, 0);
+                badge.textContent = totalItems;
+                badge.style.display = totalItems > 0 ? 'flex' : 'none';
+            }
+        }
+
+        function openCart() {
+            if (SITE_CONFIG.cart.length === 0) {
+                showNotification('Votre panier est vide', 'warning');
+                return;
+            }
+            
+            let cartContent = "🛒 VOTRE PANIER LB-K SMART\n\n";
+            let total = 0;
+            
+            SITE_CONFIG.cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartContent += `${index + 1}. ${item.name}\n`;
+                cartContent += `   Quantité: ${item.quantity} | Prix unitaire: ${item.price.toLocaleString()} FCFA\n`;
+                cartContent += `   Sous-total: ${itemTotal.toLocaleString()} FCFA\n\n`;
+            });
+            
+            cartContent += `💵 TOTAL: ${total.toLocaleString()} FCFA\n\n`;
+            cartContent += `📍 Adresse de livraison: [À préciser]\n`;
+            cartContent += `📞 Contact: [Votre numéro]\n\n`;
+            cartContent += `Merci pour votre commande !`;
+            
+            if (confirm(`${cartContent}\n\nVoulez-vous passer commande maintenant?`)) {
+                sendOrderByWhatsApp();
+            }
+        }
+
+        // ================= WHATSAPP AUTOMATION =================
+        function sendOrderByWhatsApp() {
+            if (SITE_CONFIG.cart.length === 0) {
+                showNotification('Votre panier est vide', 'warning');
+                return;
+            }
+            
+            let orderMessage = "🛒 COMMANDE LB-K SMART\n\n";
+            let total = 0;
+            
+            SITE_CONFIG.cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                orderMessage += `${index + 1}. ${item.name}\n`;
+                orderMessage += `   Quantité: ${item.quantity}\n`;
+                orderMessage += `   Prix unitaire: ${item.price.toLocaleString()} FCFA\n`;
+                orderMessage += `   Sous-total: ${itemTotal.toLocaleString()} FCFA\n\n`;
+            });
+            
+            orderMessage += `💵 TOTAL: ${total.toLocaleString()} FCFA\n\n`;
+            orderMessage += `📍 Adresse de livraison: \n`;
+            orderMessage += `📞 Téléphone: \n`;
+            orderMessage += `📧 Email: \n\n`;
+            orderMessage += `Merci pour votre commande !`;
+            
+            const phone = "+243822937321";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(orderMessage)}`, '_blank');
+        }
+
+        // ================= ASSISTANT IA AMÉLIORÉ =================
+        function openAIAssistant() {
+            const question = prompt("🤖 Assistant IA LB-K SMART\n\nComment puis-je vous aider aujourd'hui?");
+            if (!question) return;
+            
+            const lowerQuestion = question.toLowerCase();
+            let response = "";
+            
+            // Système de règles basé sur les mots-clés
+            if (lowerQuestion.includes('livraison') || lowerQuestion.includes('délai')) {
+                response = "📦 Livraison:\n- Petit colis: 2-3 jours\n- Moyen colis: 3-5 jours\n- Gros colis: 5-7 jours\n- Partout en RDC";
+            } else if (lowerQuestion.includes('prix') || lowerQuestion.includes('tarif')) {
+                response = "💰 Tarifs transport:\n✈️ Aérien: 28-30$/kg\n⛵ Maritime: 500$/CBM\n🚚 Route: selon distance";
+            } else if (lowerQuestion.includes('paiement') || lowerQuestion.includes('payer')) {
+                response = "💳 Paiement:\n- Mobile Money (Orange, M-Pesa)\n- IllicoCash\n- Espèces à la livraison\n- Virement bancaire";
+            } else if (lowerQuestion.includes('téléphone') || lowerQuestion.includes('iphone')) {
+                const phones = SITE_CONFIG.products.laurent.filter(p => 
+                    p.name.toLowerCase().includes('iphone') || 
+                    p.category.includes('electronique')
+                );
+                if (phones.length > 0) {
+                    response = "📱 Téléphones disponibles:\n" + 
+                        phones.map(p => `- ${p.name}: ${p.price.toLocaleString()} FCFA`).join('\n');
+                } else {
+                    response = "Nous avons plusieurs modèles de téléphones. Consultez notre catalogue ou envoyez-nous le modèle souhaité.";
+                }
+            } else if (lowerQuestion.includes('robe') || lowerQuestion.includes('vêtement')) {
+                const clothes = SITE_CONFIG.products.laurent.filter(p => 
+                    p.category.includes('mode')
+                );
+                if (clothes.length > 0) {
+                    response = "👗 Mode disponible:\n" + 
+                        clothes.map(p => `- ${p.name}: ${p.price.toLocaleString()} FCFA`).join('\n');
+                } else {
+                    response = "Nous avons une large gamme de vêtements. Envoyez-nous une photo du modèle pour commande sur mesure.";
+                }
+            } else {
+                const responses = [
+                    "Pour plus d'informations, contactez-nous au +243 82 293 7321",
+                    "Visitez notre catalogue pour voir tous nos produits",
+                    "Nous proposons la commande sur mesure, envoyez-nous vos préférences",
+                    "Livraison disponible dans toute la RDC",
+                    "Paiement sécurisé par Mobile Money"
+                ];
+                response = responses[Math.floor(Math.random() * responses.length)];
+            }
+            
+            setTimeout(() => {
+                alert(`🤖 Assistant IA LB-K SMART:\n\nVotre question: "${question}"\n\n💡 Réponse: ${response}\n\n📞 Contact: +243 82 293 7321`);
+            }, 1000);
+        }
+
+        // ================= RECHERCHE =================
+        function initSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                let searchTimeout;
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        performSearch(this.value);
+                    }, 500);
+                });
+            }
+        }
+
+        function performSearch(query) {
+            if (!query.trim()) {
+                showCategories();
+                return;
+            }
+            
+            query = query.toLowerCase();
+            const results = [];
+            
+            ['betty', 'laurent'].forEach(boutique => {
+                SITE_CONFIG.products[boutique].forEach(product => {
+                    if (product.name.toLowerCase().includes(query) || 
+                        product.description.toLowerCase().includes(query)) {
+                        results.push({...product, boutique});
+                    }
+                });
+            });
+            
+            if (results.length > 0) {
+                document.querySelector('.catalog-container').style.display = 'none';
+                document.getElementById('products-display-section').style.display = 'block';
+                document.getElementById('current-category-title').textContent = `Résultats pour "${query}"`;
+                displayProducts(results, results[0].boutique);
+            } else {
+                showNotification(`Aucun résultat pour "${query}"`, 'warning');
+            }
+        }
+
+        // ================= ADMIN PANEL =================
+        function openAdminLogin() {
+            const password = prompt("🔐 Accès Admin\n\nEntrez le mot de passe:");
+            if (!password) return;
+            
+            if (checkAdminLogin(password)) {
+                loadAdminPanel();
+            } else {
+                showNotification('Mot de passe incorrect', 'error');
+            }
+        }
+
+        function loadAdminPanel() {
+            const overlay = document.getElementById('adminOverlay');
+            const panel = document.getElementById('adminPanel');
+            
+            panel.innerHTML = `
+                <div class="admin-header">
+                    <div class="admin-title">
+                        <i class="fas fa-cogs"></i> Panneau d'Administration
+                    </div>
+                    <div class="admin-status">
+                        <span class="status-dot"></span> Connecté
+                    </div>
+                </div>
+                
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="switchAdminTab('products')">
+                        <i class="fas fa-box"></i> Produits
+                    </button>
+                    <button class="admin-tab" onclick="switchAdminTab('carousel')">
+                        <i class="fas fa-images"></i> Carrousel
+                    </button>
+                    <button class="admin-tab" onclick="switchAdminTab('orders')">
+                        <i class="fas fa-shopping-cart"></i> Commandes
+                    </button>
+                    <button class="admin-tab" onclick="switchAdminTab('settings')">
+                        <i class="fas fa-cog"></i> Paramètres
+                    </button>
+                </div>
+                
+                <div id="adminProductsTab" class="tab-content active">
+                    <h3 style="color: var(--secondary); margin-bottom: 2rem;">
+                        <i class="fas fa-box"></i> Gestion des Produits
+                    </h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h4>Ajouter un Produit</h4>
+                            <form onsubmit="addNewProduct(event)">
+                                <div class="form-group">
+                                    <label class="form-label">Boutique</label>
+                                    <select class="form-select" id="adminProductBoutique" required>
+                                        <option value="betty">Betty Kabey Smart</option>
+                                        <option value="laurent">Laurent Kabesha Smart</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Nom du produit</label>
+                                    <input type="text" class="form-input" id="adminProductName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Prix (FCFA)</label>
+                                    <input type="number" class="form-input" id="adminProductPrice" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-textarea" id="adminProductDescription"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">URL de l'image</label>
+                                    <input type="text" class="form-input" id="adminProductImage">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i> Ajouter le produit
+                                </button>
+                            </form>
+                        </div>
+                        <div>
+                            <h4>Produits existants</h4>
+                            <div style="max-height: 400px; overflow-y: auto;">
+                                ${renderAdminProductsList()}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="adminCarouselTab" class="tab-content">
+                    <h3 style="color: var(--secondary); margin-bottom: 2rem;">
+                        <i class="fas fa-images"></i> Gestion du Carrousel
+                    </h3>
+                    <form onsubmit="addNewSlide(event)">
+                        <div class="form-group">
+                            <label class="form-label">Titre</label>
+                            <input type="text" class="form-input" id="slideTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-textarea" id="slideDescription" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">URL de l'image</label>
+                            <input type="text" class="form-input" id="slideImage" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Ajouter au carrousel
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="adminOrdersTab" class="tab-content">
+                    <h3 style="color: var(--secondary); margin-bottom: 2rem;">
+                        <i class="fas fa-shopping-cart"></i> Commandes en attente
+                    </h3>
+                    <p>${SITE_CONFIG.cart.length} articles dans le panier global</p>
+                </div>
+                
+                <div id="adminSettingsTab" class="tab-content">
+                    <h3 style="color: var(--secondary); margin-bottom: 2rem;">
+                        <i class="fas fa-cog"></i> Paramètres du site
+                    </h3>
+                    <div class="form-group">
+                        <label class="form-label">Nom du site</label>
+                        <input type="text" class="form-input" value="${SITE_CONFIG.siteName}" 
+                               onchange="SITE_CONFIG.siteName = this.value; saveConfig();">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Téléphone WhatsApp</label>
+                        <input type="text" class="form-input" value="+243822937321">
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" onclick="closeAdminPanel()">
+                        <i class="fas fa-times"></i> Fermer
+                    </button>
+                </div>
+            `;
+            
+            overlay.classList.add('active');
+        }
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.admin-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(`admin${tabName.charAt(0).toUpperCase() + tabName.slice(1)}Tab`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function addNewProduct(event) {
+            event.preventDefault();
+            
+            const productData = {
+                id: Date.now(),
+                name: document.getElementById('adminProductName').value,
+                price: parseFloat(document.getElementById('adminProductPrice').value),
+                description: document.getElementById('adminProductDescription').value,
+                image: document.getElementById('adminProductImage').value || 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400',
+                boutique: document.getElementById('adminProductBoutique').value,
+                stock: 10,
+                category: 'other',
+                rating: 4.0
+            };
+            
+            SITE_CONFIG.products[productData.boutique].push(productData);
+            saveConfig();
+            loadAdminPanel();
+            showNotification('Produit ajouté avec succès!', 'success');
+        }
+
+        function addNewSlide(event) {
+            event.preventDefault();
+            
+            const slideData = {
+                title: document.getElementById('slideTitle').value,
+                description: document.getElementById('slideDescription').value,
+                image: document.getElementById('slideImage').value,
+                link: "#"
+            };
+            
+            SITE_CONFIG.carousel.push(slideData);
+            saveConfig();
+            initCarousel();
+            showNotification('Slide ajouté au carrousel!', 'success');
+        }
+
+        function renderAdminProductsList() {
+            let html = '';
+            ['betty', 'laurent'].forEach(boutique => {
+                html += `<h5 style="color: var(--secondary); margin-top: 1rem;">${boutique === 'betty' ? 'Betty' : 'Laurent'}</h5>`;
+                SITE_CONFIG.products[boutique].forEach(product => {
+                    html += `
+                        <div style="background: rgba(255,255,255,0.05); padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px;">
+                            <strong>${product.name}</strong> - ${product.price.toLocaleString()} FCFA
+                            <button onclick="deleteProduct(${product.id}, '${boutique}')" 
+                                    style="float: right; background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+            });
+            return html || '<p>Aucun produit</p>';
+        }
+
+        function deleteProduct(productId, boutique) {
+            if (confirm('Supprimer ce produit?')) {
+                SITE_CONFIG.products[boutique] = SITE_CONFIG.products[boutique].filter(p => p.id !== productId);
+                saveConfig();
+                loadAdminPanel();
+                showNotification('Produit supprimé', 'success');
+            }
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminOverlay').classList.remove('active');
+        }
+
+        // ================= FONCTIONS DIVERSES =================
+        function openWhatsApp() {
+            const phone = "+243822937321";
+            const message = encodeURIComponent("Bonjour LB-K SMART, je souhaite obtenir des informations sur vos produits.");
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        function quickOrder() {
+            const product = prompt("Quel produit souhaitez-vous commander rapidement?");
+            if (product) {
+                const message = `Bonjour, je souhaite commander rapidement: ${product}`;
+                window.open(`https://wa.me/+243822937321?text=${encodeURIComponent(message)}`, '_blank');
+            }
+        }
+
+        function showDeliveryInfo() {
+            alert(`🚚 LIVRAISON LB-K SMART\n\n📦 Petits colis: Prix selon distance\n🚚 Gros colis (>400kg): LIVRAISON GRATUITE\n💰 Paiement: Mobile Money / IllicoCash / Espèces\n⏱️ Délais: 10-21 jours (aérien)\n📍 Zone: Toute la RDC`);
+        }
+
+        function showPricingInfo(type) {
+            if (type === 'air') {
+                alert(`✈️ TARIFS TRANSPORT AÉRIEN\n\n📦 Colis normal: 28$/kg (15-21 jours)\n🚀 Colis express: 30$/kg (10-15 jours)\n📱 Téléphones/tablettes: 30$/pièce\n💻 Ordinateurs: 50$/pièce\n⚠️ Batteries: transport par bateau uniquement`);
+            } else {
+                alert(`⛵ TARIFS TRANSPORT MARITIME\n\n📦 1 CBM: 500$\n⚖️ 1 Tonne: 600$\n🔋 Batteries par bateau uniquement\n⏳ Délai: 30-45 jours\n🚢 Idéal pour les grosses commandes`);
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ================= GESTION DES ÉVÉNEMENTS =================
+        function initEvents() {
+            // Menu hamburger
+            const hamburger = document.getElementById('hamburgerMenu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    alert("Menu temporairement désactivé. Utilisez les boutons flottants.");
+                });
+            }
+            
+            // Touches clavier
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeAdminPanel();
+                }
+                if (e.ctrlKey && e.key === 'k') {
+                    e.preventDefault();
+                    document.getElementById('searchInput').focus();
+                }
+            });
+        }
+
+        // Sauvegarder avant de quitter
+        window.addEventListener('beforeunload', () => {
+            saveConfig();
+        });
+    </script>
+</body>
+</html>
