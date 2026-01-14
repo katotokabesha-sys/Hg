@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LB-K SMART - Boutique Intelligente Kolwezi</title>
+    
+    <!-- Métadonnées SEO améliorées -->
+    <meta name="description" content="Boutique LB-K SMART - Électronique, Mode, Accessoires, Produits Pharmaceutiques à Kolwezi, RDC. Commande sur mesure, livraison rapide, paiement sécurisé.">
+    <meta name="keywords" content="boutique, Kolwezi, RDC, électronique, mode, pharmacie, livraison, commande sur mesure, LB-K SMART">
+    <meta name="author" content="LB-K SMART">
+    <meta name="theme-color" content="#0a0a1a">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="LB-K SMART - Boutique Intelligente Kolwezi">
+    <meta property="og:description" content="Boutique LB-K SMART - Électronique, Mode, Accessoires, Produits Pharmaceutiques à Kolwezi, RDC">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/fluency/96/shopping-cart-loaded.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/96/shopping-cart-loaded.png">
+    
+    <!-- CSS Externes optimisés -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
+    <style>
+        /* ============ VARIABLES GLOBALES ============ */
+        :root {
+            /* Thème Futuriste */
+            --primary: #0a0a1a;
+            --secondary: #00f3ff;
+            --accent: #7b00ff;
+            --danger: #ff0066;
+            --success: #00ff9d;
+            --warning: #ffcc00;
+            --light: #f0f8ff;
+            --dark: #050510;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-dark: rgba(5, 5, 16, 0.95);
+            --shadow: 0 8px 32px rgba(0, 243, 255, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-title: 'Orbitron', sans-serif;
+            --font-text: 'Exo 2', sans-serif;
+            
+            /* Variables personnalisables */
+            --btn-color: var(--secondary);
+            --nav-color: var(--primary);
+            --text-color: var(--light);
+            --bg-color: var(--primary);
+            --icon-color: var(--secondary);
+            --hover-color: var(--accent);
+            --animation-color: var(--secondary);
+        }
+
+        /* Thème Moderne */
+        .theme-moderne {
+            --primary: #ffffff;
+            --secondary: #2c3e50;
+            --accent: #3498db;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --light: #34495e;
+            --dark: #ecf0f1;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-dark: rgba(236, 240, 241, 0.95);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --btn-color: #3498db;
+            --nav-color: #2c3e50;
+            --text-color: #2c3e50;
+            --bg-color: #f8f9fa;
+            --icon-color: #3498db;
+            --hover-color: #2980b9;
+            --animation-color: #3498db;
+            --font-title: 'Segoe UI', sans-serif;
+        }
+
+        /* Thème Classique */
+        .theme-classique {
+            --primary: #f8f5f0;
+            --secondary: #8B4513;
+            --accent: #D2691E;
+            --danger: #8B0000;
+            --success: #228B22;
+            --warning: #DAA520;
+            --light: #5D4037;
+            --dark: #EFEBE9;
+            --glass: rgba(139, 69, 19, 0.08);
+            --glass-dark: rgba(248, 245, 240, 0.95);
+            --shadow: 0 4px 20px rgba(139, 69, 19, 0.1);
+            --btn-color: #8B4513;
+            --nav-color: #5D4037;
+            --text-color: #5D4037;
+            --bg-color: #f8f5f0;
+            --icon-color: #D2691E;
+            --hover-color: #A0522D;
+            --animation-color: #8B4513;
+            --font-title: 'Georgia', 'Times New Roman', serif;
+            --font-text: 'Georgia', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-text);
+            background: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        /* ============ BOUTONS FLOTTANTS ============ */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9998;
+        }
+
+        .floating-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: var(--btn-color);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 9999;
+        }
+
+        .floating-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations configurables */
+        .floating-button.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .floating-button.blink {
+            animation: blink 1.5s infinite;
+        }
+
+        .floating-button.shake {
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px var(--animation-color); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* ============ BARRE DE NAVIGATION FIXE ============ */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-color);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 1rem 2rem;
+            transition: var(--transition);
+        }
+
+        .theme-moderne .main-header {
+            background: rgba(44, 62, 80, 0.98);
+            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .theme-classique .main-header {
+            background: rgba(93, 64, 55, 0.98);
+            border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        /* Logo */
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Menu Hamburger amélioré */
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+            background: transparent;
+            border: none;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Barre de Recherche améliorée */
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 20px 10px 45px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-family: var(--font-text);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .theme-moderne .search-input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .theme-classique .search-input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #8B4513;
+            color: #5D4037;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            pointer-events: none;
+        }
+
+        /* Bouton Panier amélioré */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .cart-icon:hover {
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* ============ INDICATEUR UTILISATEURS CONNECTÉS ============ */
+        .users-online {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            z-index: 999;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .users-online:hover {
+            background: rgba(0, 243, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .users-count {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .theme-moderne .users-online {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        .theme-classique .users-online {
+            background: rgba(139, 69, 19, 0.1);
+            border: 1px solid rgba(139, 69, 19, 0.3);
+        }
+
+        /* ============ MENU TIROIR AMÉLIORÉ ============ */
+        .drawer-menu {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            background: var(--glass-dark);
+            backdrop-filter: blur(30px);
+            z-index: 1001;
+            padding: 2rem;
+            border-bottom: 1px solid var(--secondary);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .drawer-menu.active {
+            top: 80px;
+        }
+
+        .drawer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-section {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-title {
+            color: var(--secondary);
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .menu-item:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            background: rgba(0, 243, 255, 0.05);
+            box-shadow: var(--shadow);
+        }
+
+        /* ============ HERO / CARROUSEL AMÉLIORÉ ============ */
+        .hero-section {
+            margin-top: 80px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--secondary);
+            max-width: 800px;
+            text-align: center;
+            animation: slideIn 0.8s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* ============ PUBLICITÉ ARTICLES AMÉLIORÉE ============ */
+        .featured-products {
+            padding: 3rem 2rem;
+            background: var(--glass);
+            margin: 2rem 0;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .featured-card {
+            background: var(--glass);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 15px;
+            background: var(--danger);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        /* ============ RÉSEAUX SOCIAUX AMÉLIORÉS ============ */
+        .social-section {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--glass);
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-card {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--light);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .social-card:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .social-facebook { color: #1877F2; }
+        .social-instagram { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .social-tiktok { color: #000000; }
+
+        .social-card:hover.social-facebook { 
+            background: #1877F2;
+            color: white;
+        }
+        .social-card:hover.social-instagram { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            color: white;
+        }
+        .social-card:hover.social-tiktok { 
+            background: #000000;
+            color: white;
+        }
+
+        /* ============ ADMINISTRATION AVANCÉE ============ */
+        .admin-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .admin-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .admin-panel {
+            background: var(--glass-dark);
+            backdrop-filter: blur(30px);
+            border-radius: var(--radius);
+            padding: 2rem;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 25px 75px rgba(0, 0, 0, 0.7);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .admin-title {
+            color: var(--secondary);
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Onglets Admin */
+        .admin-tabs-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .admin-tab {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid transparent;
+            border-radius: 50px;
+            color: var(--light);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-text);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-tab:hover {
+            background: rgba(0, 243, 255, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .admin-tab.active {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: black;
+            border-color: var(--secondary);
+        }
+
+        /* Contenu des onglets */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Thèmes */
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .theme-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .theme-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .theme-card.active {
+            border-color: var(--secondary);
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .theme-preview {
+            width: 100%;
+            height: 100px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 2px solid var(--glass);
+        }
+
+        .theme-futuriste .theme-preview {
+            background: linear-gradient(135deg, #0a0a1a, #7b00ff, #00f3ff);
+        }
+
+        .theme-moderne-card .theme-preview {
+            background: linear-gradient(135deg, #2c3e50, #3498db, #ffffff);
+        }
+
+        .theme-classique-card .theme-preview {
+            background: linear-gradient(135deg, #8B4513, #D2691E, #f8f5f0);
+        }
+
+        /* Section Couleurs */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .color-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        /* Section Navigation */
+        .nav-editor {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .nav-item-editor {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Section Décisions */
+        .decisions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .decision-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        /* Section Réseaux Sociaux */
+        .social-config {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-config-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        /* Section Publicité */
+        .ad-manager {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .ad-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        /* ============ STYLES COMMUNS AMÉLIORÉS ============ */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-family: var(--font-text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--light);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 243, 255, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-family: var(--font-text);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-family: var(--font-text);
+            cursor: pointer;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+            
+            .search-container {
+                order: 3;
+                width: 100%;
+                max-width: 100%;
+                margin: 1rem 0 0;
+            }
+            
+            .hero-section {
+                height: 300px;
+            }
+            
+            .slide-content {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+            
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            
+            .users-online {
+                top: 150px;
+                right: 10px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            
+            .floating-buttons {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .floating-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .drawer-menu.active {
+                top: 120px;
+            }
+            
+            .admin-panel {
+                padding: 1rem;
+                width: 95%;
+            }
+            
+            .admin-tabs-container {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 0.5rem;
+            }
+            
+            .admin-tab {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .themes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-card {
+                width: 70px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+            
+            .floating-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+
+        /* ============ LOADING ANIMATION ============ */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--glass);
+            border-top: 2px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ============ SCROLLBAR STYLING ============ */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--glass);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de Navigation Fixe -->
+    <header class="main-header">
+        <div class="nav-container">
+            <!-- Menu Hamburger -->
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menu de navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Logo -->
+            <a href="#" class="logo" onclick="scrollToTop()">
+                <i class="fas fa-bolt"></i> LB-K SMART
+            </a>
+
+            <!-- Barre de Recherche -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" 
+                       placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+            </div>
+
+            <!-- Panier -->
+            <div class="cart-icon" onclick="openCart()" aria-label="Ouvrir le panier">
+                <i class="fas fa-shopping-cart" style="font-size: 1.3rem; color: var(--secondary);"></i>
+                <span id="cartBadge" class="cart-badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Utilisateurs Connectés -->
+    <div class="users-online" id="usersOnline">
+        <i class="fas fa-users"></i>
+        <span class="users-count">0</span> visiteurs en ligne
+    </div>
+
+    <!-- Boutons Flottants -->
+    <div class="floating-buttons">
+        <button class="floating-button floating-button-ai pulse" id="floatingAiButton" onclick="openAIAssistant()" aria-label="Assistant IA">
+            <i class="fas fa-robot"></i>
+        </button>
+        <button class="floating-button floating-button-whatsapp blink" id="floatingWhatsAppButton" onclick="openWhatsApp()" aria-label="Contact WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <!-- Menu Tiroir -->
+    <nav class="drawer-menu" id="drawerMenu" aria-label="Menu principal">
+        <div class="drawer-content">
+            <!-- Logo dans le menu -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="logo" style="font-size: 2rem; justify-content: center;">
+                    <i class="fas fa-bolt"></i> LB-K SMART
+                </div>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 10px;">
+                    COMMANDE SUR MESURE – QUALITÉ & FIABILITÉ GARANTIES
+                </p>
+            </div>
+
+            <!-- Coordonnées -->
+            <div class="menu-section">
+                <h3 class="menu-title">
+                    <i class="fas fa-map-marker-alt"></i> COORDONNÉES
+                </h3>
+                <div class="menu-grid">
+                    <div class="menu-item" onclick="showContactInfo()" role="button" tabindex="0">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-store"></i> Boutique LB-K SMART
+                        </h4>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <i class="fas fa-map-pin"></i> Site Jolie RVA, Manika, Kolwezi, RDC<br>
+                            <i class="fas fa-phone"></i> +243 82 293 7321<br>
+                            <i class="fas fa-clock"></i> Lundi-Samedi: 9h00-17h00<br>
+                            <i class="fas fa-envelope"></i> contact@lbksmart.com<br>
+                            <i class="fas fa-calendar-check"></i> Consultations sur rendez-vous
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disponibilité & Commande -->
+            <div class="menu-section">
+                <h3 class="menu-title">
+                    <i class="fas fa-box"></i> DISPONIBILITÉ & COMMANDE
+                </h3>
+                <div class="menu-grid">
+                    <div class="menu-item" onclick="showOrderInfo()" role="button" tabindex="0">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-shopping-cart"></i> Commande sur mesure
+                        </h4>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <i class="fas fa-camera"></i> Image du modèle<br>
+                            <i class="fas fa-tag"></i> Marque (si connue)<br>
+                            <i class="fas fa-ruler-combined"></i> Quantité et taille<br>
+                            <i class="fas fa-globe"></i> Marques chinoises et européennes
+                        </p>
+                    </div>
+                    
+                    <div class="menu-item" onclick="showDeliveryInfo()" role="button" tabindex="0">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-truck"></i> Livraison
+                        </h4>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <i class="fas fa-box"></i> Petits colis: Tarif selon distance<br>
+                            <i class="fas fa-shipping-fast"></i> Gros colis (>400kg): GRATUIT<br>
+                            <i class="fas fa-money-bill-wave"></i> Paiement Mobile Money/IllicoCash<br>
+                            <i class="fas fa-hand-holding-usd"></i> Paiement à la livraison
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarification -->
+            <div class="menu-section">
+                <h3 class="menu-title">
+                    <i class="fas fa-money-bill-wave"></i> TARIFICATION
+                </h3>
+                <div class="menu-grid">
+                    <div class="menu-item" onclick="showPricingInfo('air')" role="button" tabindex="0">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-plane"></i> Transport Aérien
+                        </h4>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <strong>Colis normal:</strong> 28$/kg (15-21 jours)<br>
+                            <strong>Colis express:</strong> 30$/kg (10-15 jours)<br>
+                            <strong>Téléphones:</strong> 30$/pièce<br>
+                            <strong>Ordinateurs:</strong> 50$/pièce
+                        </p>
+                    </div>
+                    
+                    <div class="menu-item" onclick="showPricingInfo('sea')" role="button" tabindex="0">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-ship"></i> Transport Maritime
+                        </h4>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <strong>1 CBM:</strong> 500$<br>
+                            <strong>1 Tonne:</strong> 600$<br>
+                            <i class="fas fa-exclamation-triangle"></i> Batteries par bateau uniquement
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fermer le menu -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn btn-secondary" onclick="closeDrawer()" 
+                        style="padding: 12px 40px;">
+                    <i class="fas fa-times"></i> Fermer le Menu
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrousel Hero -->
+    <section class="hero-section" aria-label="Carrousel de présentation">
+        <div class="carousel" id="carousel">
+            <!-- Les slides seront ajoutés dynamiquement -->
+        </div>
+    </section>
+
+    <!-- Articles en Vedette -->
+    <section class="featured-products" aria-label="Articles en vedette">
+        <h2 style="text-align: center; color: var(--secondary); margin-bottom: 2rem; font-family: var(--font-title);">
+            <i class="fas fa-star"></i> ARTICLES EN VEDETTE
+        </h2>
+        <div class="featured-grid" id="featuredGrid">
+            <!-- Articles vedettes seront ajoutés dynamiquement -->
+        </div>
+    </section>
+
+    <!-- Réseaux Sociaux -->
+    <section class="social-section" aria-label="Réseaux sociaux">
+        <h2 style="color: var(--secondary); margin-bottom: 1rem; font-family: var(--font-title);">
+            <i class="fas fa-hashtag"></i> SUIVEZ-NOUS
+        </h2>
+        <p style="color: var(--text-color); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Restez connecté avec LB-K SMART sur nos réseaux sociaux pour les dernières nouveautés et promotions
+        </p>
+        <div class="social-grid">
+            <div class="social-card social-facebook" onclick="openSocial('facebook')" role="button" tabindex="0" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </div>
+            <div class="social-card social-instagram" onclick="openSocial('instagram')" role="button" tabindex="0" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div class="social-card social-tiktok" onclick="openSocial('tiktok')" role="button" tabindex="0" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+            <i class="fas fa-envelope"></i> Contact officiel: drylaur5@gmail.com
+        </p>
+    </section>
+
+    <!-- Panneau Admin Complet -->
+    <div class="admin-overlay" id="adminOverlay" role="dialog" aria-label="Panneau d'administration">
+        <div class="admin-panel">
+            <div class="admin-header">
+                <div class="admin-title">
+                    <i class="fas fa-user-shield"></i>
+                    <span>PANEL ADMINISTRATEUR SUPÉRIEUR</span>
+                    <span class="status-indicator status-active"></span>
+                </div>
+                <button onclick="closeAdminPanel()" aria-label="Fermer le panneau d'administration"
+                        style="background: none; border: none; color: var(--light); cursor: pointer; font-size: 1.2rem; padding: 5px;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Onglets Admin -->
+            <div class="admin-tabs-container" role="tablist">
+                <button class="admin-tab active" onclick="switchAdminTab('dashboard')" data-tab="dashboard" role="tab" aria-selected="true">
+                    <i class="fas fa-tachometer-alt"></i> Tableau de bord
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('themes')" data-tab="themes" role="tab" aria-selected="false">
+                    <i class="fas fa-palette"></i> Thèmes
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('colors')" data-tab="colors" role="tab" aria-selected="false">
+                    <i class="fas fa-fill-drip"></i> Couleurs
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('navigation')" data-tab="navigation" role="tab" aria-selected="false">
+                    <i class="fas fa-bars"></i> Navigation
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('decisions')" data-tab="decisions" role="tab" aria-selected="false">
+                    <i class="fas fa-cogs"></i> Décisions
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('social')" data-tab="social" role="tab" aria-selected="false">
+                    <i class="fas fa-share-alt"></i> Réseaux Sociaux
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('ads')" data-tab="ads" role="tab" aria-selected="false">
+                    <i class="fas fa-bullhorn"></i> Publicité
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('floating')" data-tab="floating" role="tab" aria-selected="false">
+                    <i class="fas fa-bell"></i> Boutons Flottants
+                </button>
+            </div>
+
+            <!-- Tableau de bord -->
+            <div id="tab-dashboard" class="tab-content active" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Tableau de bord</h3>
+                <div class="decisions-grid">
+                    <div class="decision-card">
+                        <div style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-users"></i> Visiteurs en ligne
+                        </div>
+                        <div style="font-size: 2rem; font-weight: bold;" id="adminOnlineUsers">0</div>
+                    </div>
+                    <div class="decision-card">
+                        <div style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-shopping-cart"></i> Commandes aujourd'hui
+                        </div>
+                        <div style="font-size: 2rem; font-weight: bold;" id="adminTodayOrders">0</div>
+                    </div>
+                    <div class="decision-card">
+                        <div style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-eye"></i> Vues totales
+                        </div>
+                        <div style="font-size: 2rem; font-weight: bold;" id="adminTotalViews">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thèmes -->
+            <div id="tab-themes" class="tab-content" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Gestion des thèmes</h3>
+                <div class="themes-grid" id="themesGrid">
+                    <div class="theme-card theme-futuriste active" onclick="applyTheme('futuriste')" role="button" tabindex="0">
+                        <div class="theme-preview"></div>
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">Thème Futuriste</h4>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            Design moderne avec effets lumineux et animations
+                        </p>
+                    </div>
+                    <div class="theme-card theme-moderne-card" onclick="applyTheme('moderne')" role="button" tabindex="0">
+                        <div class="theme-preview"></div>
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">Thème Moderne</h4>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            Design épuré avec couleurs sobres et élégantes
+                        </p>
+                    </div>
+                    <div class="theme-card theme-classique-card" onclick="applyTheme('classique')" role="button" tabindex="0">
+                        <div class="theme-preview"></div>
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">Thème Classique</h4>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            Style traditionnel avec couleurs chaleureuses
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Couleurs -->
+            <div id="tab-colors" class="tab-content" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Personnalisation des couleurs</h3>
+                <div class="color-palette" id="colorPalette">
+                    <!-- Les sélecteurs de couleur seront ajoutés dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div id="tab-navigation" class="tab-content" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Gestion de la navigation</h3>
+                <div class="nav-editor" id="navEditor">
+                    <!-- Éditeur de navigation dynamique -->
+                </div>
+            </div>
+
+            <!-- Décisions -->
+            <div id="tab-decisions" class="tab-content" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Ensemble Décisionnel</h3>
+                <div class="decisions-grid">
+                    <div class="decision-card">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-eye"></i> Décisions Visuelles
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Animations</label>
+                            <select class="form-select" id="animationsSetting">
+                                <option value="enabled">Activées</option>
+                                <option value="disabled">Désactivées</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Transparence</label>
+                            <select class="form-select" id="transparencySetting">
+                                <option value="high">Élevée</option>
+                                <option value="medium">Moyenne</option>
+                                <option value="low">Basse</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="decision-card">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-sitemap"></i> Décisions Structurelles
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Sections actives</label>
+                            <div style="display: flex; flex-direction: column; gap: 5px;">
+                                <label><input type="checkbox" checked> Carrousel</label>
+                                <label><input type="checkbox" checked> Produits vedettes</label>
+                                <label><input type="checkbox" checked> Réseaux sociaux</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réseaux Sociaux -->
+            <div id="tab-social" class="tab-content" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Gestion des réseaux sociaux</h3>
+                <div class="social-config">
+                    <div class="social-config-item">
+                        <h4 style="color: var(--secondary); margin-bottom: 15px;">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">URL de la page</label>
+                            <input type="text" class="form-input" id="facebookUrl" placeholder="https://facebook.com/lbksmart">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Statut</label>
+                            <select class="form-select" id="facebookStatus">
+                                <option value="active">Actif</option>
+                                <option value="inactive">Inactif</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="social-config-item">
+                        <h4 style="color: var(--secondary); margin-bottom: 15px;">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">URL du profil</label>
+                            <input type="text" class="form-input" id="instagramUrl" placeholder="https://instagram.com/lbksmart">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Statut</label>
+                            <select class="form-select" id="instagramStatus">
+                                <option value="active">Actif</option>
+                                <option value="inactive">Inactif</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="social-config-item">
+                        <h4 style="color: var(--secondary); margin-bottom: 15px;">
+                            <i class="fab fa-tiktok"></i> TikTok
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">URL du compte</label>
+                            <input type="text" class="form-input" id="tiktokUrl" placeholder="https://tiktok.com/@lbksmart">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Statut</label>
+                            <select class="form-select" id="tiktokStatus">
+                                <option value="active">Actif</option>
+                                <option value="inactive">Inactif</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publicité -->
+            <div id="tab-ads" class="tab-content" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Gestion de la publicité</h3>
+                <div class="ad-manager">
+                    <div class="ad-item">
+                        <h4 style="color: var(--secondary); margin-bottom: 15px;">
+                            <i class="fas fa-star"></i> Articles Vedettes
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Nombre d'articles</label>
+                            <input type="number" class="form-input" id="featuredCount" min="1" max="10" value="3">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Rotation automatique</label>
+                            <select class="form-select" id="featuredRotation">
+                                <option value="enabled">Activée</option>
+                                <option value="disabled">Désactivée</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ad-item">
+                        <h4 style="color: var(--secondary); margin-bottom: 15px;">
+                            <i class="fas fa-bullhorn"></i> Bannières Promotionnelles
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Statut</label>
+                            <select class="form-select" id="bannerStatus">
+                                <option value="active">Actives</option>
+                                <option value="inactive">Inactives</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Fréquence d'affichage</label>
+                            <select class="form-select" id="bannerFrequency">
+                                <option value="high">Élevée</option>
+                                <option value="medium">Moyenne</option>
+                                <option value="low">Basse</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boutons Flottants -->
+            <div id="tab-floating" class="tab-content" role="tabpanel">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Configuration des boutons flottants</h3>
+                <div class="decisions-grid">
+                    <div class="decision-card">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fas fa-robot"></i> Bouton IA
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Statut</label>
+                            <select class="form-select" id="aiButtonStatus">
+                                <option value="enabled">Activé</option>
+                                <option value="disabled">Désactivé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Animation</label>
+                            <select class="form-select" id="aiButtonAnimation">
+                                <option value="pulse">Pulsation</option>
+                                <option value="blink">Clignotement</option>
+                                <option value="shake">Vibration</option>
+                                <option value="none">Aucune</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="decision-card">
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">
+                            <i class="fab fa-whatsapp"></i> Bouton WhatsApp
+                        </h4>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Statut</label>
+                            <select class="form-select" id="whatsappButtonStatus">
+                                <option value="enabled">Activé</option>
+                                <option value="disabled">Désactivé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px;">Animation</label>
+                            <select class="form-select" id="whatsappButtonAnimation">
+                                <option value="blink">Clignotement</option>
+                                <option value="pulse">Pulsation</option>
+                                <option value="shake">Vibration</option>
+                                <option value="none">Aucune</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="saveFloatingButtonsConfig()" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-save"></i> Sauvegarder la configuration
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panneau Configuration Admin -->
+    <div class="admin-overlay" id="configOverlay" role="dialog" aria-label="Connexion administrateur">
+        <div class="admin-panel" style="max-width: 500px;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <i class="fas fa-user-lock" style="font-size: 3rem; color: var(--danger); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--light); margin-bottom: 0.5rem;">Accès Administrateur</h3>
+                <p style="color: rgba(255,255,255,0.7);">Veuillez entrer le mot de passe administrateur</p>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" class="form-input" id="adminPasswordInput" 
+                       placeholder="Mot de passe administrateur" autofocus aria-label="Mot de passe administrateur">
+                <small style="color: rgba(255,255,255,0.5); display: block; margin-top: 5px;">
+                    Mot de passe par défaut: 1234 (Changez-le après la première connexion)
+                </small>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="verifyAdminPassword()" style="flex: 1;">
+                    <i class="fas fa-sign-in-alt"></i> Se connecter
+                </button>
+                
+                <button class="btn btn-secondary" onclick="closeConfigPanel()" style="flex: 1;">
+                    <i class="fas fa-times"></i> Annuler
+                </button>
+            </div>
+            
+            <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem; text-align: center;">
+                    <i class="fas fa-info-circle"></i> Seul l'administrateur principal peut accéder à ce panneau
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        // ================= CONFIGURATION GLOBALE AMÉLIORÉE =================
+        const SITE_CONFIG = {
+            adminPassword: "1234",
+            siteName: "LB-K SMART",
+            socialMedia: {
+                facebook: "https://facebook.com/lbksmart",
+                instagram: "https://instagram.com/lbksmart",
+                tiktok: "https://tiktok.com/@lbksmart",
+                email: "drylaur5@gmail.com"
+            },
+            floatingButtons: {
+                ai: { enabled: true, animation: "pulse" },
+                whatsapp: { enabled: true, animation: "blink" }
+            },
+            theme: "futuriste",
+            colors: {},
+            navigation: [],
+            featuredProducts: [],
+            onlineUsers: 0,
+            totalVisits: 0,
+            cartItems: [],
+            userPreferences: {
+                animations: true,
+                transparency: "medium",
+                notifications: true
+            }
+        };
+
+        // ================= INITIALISATION AMÉLIORÉE =================
+        document.addEventListener('DOMContentLoaded', () => {
+            loadConfig();
+            initCarousel();
+            initFeaturedProducts();
+            initFloatingButtons();
+            initColorPalette();
+            updateOnlineUsers();
+            setupEventListeners();
+            setupAccessibility();
+            checkFirstVisit();
+            loadCart();
+        });
+
+        // ================= GESTION DE LA CONFIGURATION =================
+        function loadConfig() {
+            try {
+                const saved = localStorage.getItem('lbk_smart_config');
+                if (saved) {
+                    Object.assign(SITE_CONFIG, JSON.parse(saved));
+                }
+                applyConfig();
+                console.log('Configuration chargée avec succès');
+            } catch (error) {
+                console.error('Erreur lors du chargement de la configuration:', error);
+                showToast('Erreur de chargement de la configuration', 'error');
+            }
+        }
+
+        function saveConfig() {
+            try {
+                localStorage.setItem('lbk_smart_config', JSON.stringify(SITE_CONFIG));
+                return true;
+            } catch (error) {
+                console.error('Erreur lors de la sauvegarde:', error);
+                showToast('Erreur de sauvegarde', 'error');
+                return false;
+            }
+        }
+
+        function applyConfig() {
+            // Appliquer le thème
+            document.body.classList.remove('theme-moderne', 'theme-classique');
+            if (SITE_CONFIG.theme === 'moderne') {
+                document.body.classList.add('theme-moderne');
+            } else if (SITE_CONFIG.theme === 'classique') {
+                document.body.classList.add('theme-classique');
+            }
+            
+            // Appliquer les couleurs personnalisées
+            if (SITE_CONFIG.colors && Object.keys(SITE_CONFIG.colors).length > 0) {
+                Object.entries(SITE_CONFIG.colors).forEach(([key, value]) => {
+                    document.documentElement.style.setProperty(`--${key}`, value);
+                });
+            }
+            
+            // Appliquer les préférences utilisateur
+            applyUserPreferences();
+        }
+
+        function applyUserPreferences() {
+            const animationsEnabled = SITE_CONFIG.userPreferences.animations;
+            if (!animationsEnabled) {
+                document.querySelectorAll('.floating-button').forEach(btn => {
+                    btn.style.animation = 'none';
+                });
+            }
+        }
+
+        // ================= BOUTONS FLOTTANTS AMÉLIORÉS =================
+        function initFloatingButtons() {
+            const aiBtn = document.getElementById('floatingAiButton');
+            const whatsappBtn = document.getElementById('floatingWhatsAppButton');
+            
+            // Appliquer la configuration
+            if (aiBtn) {
+                aiBtn.style.display = SITE_CONFIG.floatingButtons.ai.enabled ? 'flex' : 'none';
+                aiBtn.className = 'floating-button floating-button-ai ' + SITE_CONFIG.floatingButtons.ai.animation;
+            }
+            
+            if (whatsappBtn) {
+                whatsappBtn.style.display = SITE_CONFIG.floatingButtons.whatsapp.enabled ? 'flex' : 'none';
+                whatsappBtn.className = 'floating-button floating-button-whatsapp ' + SITE_CONFIG.floatingButtons.whatsapp.animation;
+            }
+        }
+
+        function saveFloatingButtonsConfig() {
+            SITE_CONFIG.floatingButtons.ai.enabled = document.getElementById('aiButtonStatus').value === 'enabled';
+            SITE_CONFIG.floatingButtons.ai.animation = document.getElementById('aiButtonAnimation').value;
+            SITE_CONFIG.floatingButtons.whatsapp.enabled = document.getElementById('whatsappButtonStatus').value === 'enabled';
+            SITE_CONFIG.floatingButtons.whatsapp.animation = document.getElementById('whatsappButtonAnimation').value;
+            
+            if (saveConfig()) {
+                initFloatingButtons();
+                showToast('Configuration des boutons sauvegardée', 'success');
+            }
+        }
+
+        // ================= PALETTE DE COULEURS =================
+        function initColorPalette() {
+            const colors = [
+                { name: 'primary', label: 'Couleur primaire', value: getComputedStyle(document.documentElement).getPropertyValue('--primary').trim() },
+                { name: 'secondary', label: 'Couleur secondaire', value: getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim() },
+                { name: 'accent', label: 'Couleur d\'accent', value: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() },
+                { name: 'danger', label: 'Couleur de danger', value: getComputedStyle(document.documentElement).getPropertyValue('--danger').trim() }
+            ];
+            
+            const container = document.getElementById('colorPalette');
+            if (container) {
+                colors.forEach(color => {
+                    const item = document.createElement('div');
+                    item.className = 'color-item';
+                    item.innerHTML = `
+                        <div class="color-preview" style="background: ${color.value}" onclick="openColorPicker('${color.name}')"></div>
+                        <div>
+                            <strong>${color.label}</strong><br>
+                            <small>${color.value}</small>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+        }
+
+        function openColorPicker(colorName) {
+            const currentColor = getComputedStyle(document.documentElement).getPropertyValue(`--${colorName}`).trim();
+            const newColor = prompt(`Entrez une nouvelle couleur pour ${colorName} (hex, rgb, ou nom):`, currentColor);
+            
+            if (newColor && isValidColor(newColor)) {
+                SITE_CONFIG.colors[colorName] = newColor;
+                document.documentElement.style.setProperty(`--${colorName}`, newColor);
+                saveConfig();
+                showToast(`Couleur ${colorName} mise à jour`, 'success');
+            } else if (newColor) {
+                showToast('Couleur invalide', 'error');
+            }
+        }
+
+        function isValidColor(color) {
+            const s = new Option().style;
+            s.color = color;
+            return s.color !== '';
+        }
+
+        // ================= THÈMES AMÉLIORÉS =================
+        function applyTheme(themeName) {
+            SITE_CONFIG.theme = themeName;
+            SITE_CONFIG.colors = {}; // Réinitialiser les couleurs personnalisées
+            if (saveConfig()) {
+                applyConfig();
+                updateThemeCards(themeName);
+                showToast(`Thème ${themeName} appliqué`, 'success');
+            }
+        }
+
+        function updateThemeCards(activeTheme) {
+            document.querySelectorAll('.theme-card').forEach(card => {
+                card.classList.remove('active');
+                if (card.classList.contains(`theme-${activeTheme}`) || 
+                    card.classList.contains(`theme-${activeTheme}-card`)) {
+                    card.classList.add('active');
+                }
+            });
+        }
+
+        // ================= UTILISATEURS EN LIGNE =================
+        function updateOnlineUsers() {
+            // Simuler des visiteurs (en production, utiliser WebSocket ou API)
+            const baseUsers = 5;
+            const randomFactor = Math.random() * 0.3 + 0.85; // Entre 0.85 et 1.15
+            const hourFactor = 1 + Math.sin(new Date().getHours() * Math.PI / 12) * 0.5;
+            
+            SITE_CONFIG.onlineUsers = Math.floor(baseUsers * randomFactor * hourFactor);
+            SITE_CONFIG.totalVisits++;
+            
+            const usersElement = document.getElementById('usersOnline');
+            if (usersElement) {
+                usersElement.querySelector('.users-count').textContent = SITE_CONFIG.onlineUsers;
+            }
+            
+            if (document.getElementById('adminOnlineUsers')) {
+                document.getElementById('adminOnlineUsers').textContent = SITE_CONFIG.onlineUsers;
+                document.getElementById('adminTotalViews').textContent = SITE_CONFIG.totalVisits;
+            }
+            
+            saveConfig();
+        }
+
+        // ================= GESTION DU PANIER =================
+        function loadCart() {
+            const savedCart = localStorage.getItem('lbk_cart');
+            if (savedCart) {
+                SITE_CONFIG.cartItems = JSON.parse(savedCart);
+                updateCartBadge();
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('lbk_cart', JSON.stringify(SITE_CONFIG.cartItems));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cartBadge');
+            if (badge) {
+                const totalItems = SITE_CONFIG.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+                badge.textContent = totalItems;
+                badge.style.display = totalItems > 0 ? 'flex' : 'none';
+            }
+        }
+
+        function addToFeaturedCart(productName) {
+            const existingItem = SITE_CONFIG.cartItems.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                SITE_CONFIG.cartItems.push({
+                    name: productName,
+                    quantity: 1,
+                    date: new Date().toISOString()
+                });
+            }
+            
+            saveCart();
+            showToast(`${productName} ajouté au panier`, 'success');
+        }
+
+        function openCart() {
+            if (SITE_CONFIG.cartItems.length === 0) {
+                showToast('Votre panier est vide', 'info');
+                return;
+            }
+            
+            let cartContent = "🛒 VOTRE PANIER\n\n";
+            SITE_CONFIG.cartItems.forEach((item, index) => {
+                cartContent += `${index + 1}. ${item.name} (x${item.quantity})\n`;
+            });
+            
+            cartContent += `\nTotal: ${SITE_CONFIG.cartItems.length} article(s)`;
+            
+            if (confirm(cartContent + "\n\nVoulez-vous vider le panier?")) {
+                SITE_CONFIG.cartItems = [];
+                saveCart();
+                showToast('Panier vidé', 'success');
+            }
+        }
+
+        // ================= RÉSEAUX SOCIAUX AMÉLIORÉS =================
+        function openSocial(platform) {
+            const urls = {
+                facebook: SITE_CONFIG.socialMedia.facebook,
+                instagram: SITE_CONFIG.socialMedia.instagram,
+                tiktok: SITE_CONFIG.socialMedia.tiktok
+            };
+            
+            const url = urls[platform];
+            if (url && url !== '#') {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            } else {
+                showToast(`Lien ${platform} non configuré`, 'warning');
+            }
+        }
+
+        // ================= ARTICLES EN VEDETTE AMÉLIORÉS =================
+        function initFeaturedProducts() {
+            const featuredProducts = [
+                { 
+                    name: "iPhone 15 Pro Max", 
+                    price: 1299, 
+                    image: "https://images.unsplash.com/photo-1598327105854-c8674faddf74?w=800", 
+                    badge: "Nouveau",
+                    category: "Électronique"
+                },
+                { 
+                    name: "Robe de Soirée Élégante", 
+                    price: 89.99, 
+                    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w-800", 
+                    badge: "Promotion",
+                    category: "Mode"
+                },
+                { 
+                    name: "Kit Cosmétique Complet", 
+                    price: 45, 
+                    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800", 
+                    badge: "Populaire",
+                    category: "Beauté"
+                }
+            ];
+            
+            const container = document.getElementById('featuredGrid');
+            if (container) {
+                featuredProducts.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'featured-card';
+                    card.innerHTML = `
+                        ${product.badge ? `<div class="featured-badge">${product.badge}</div>` : ''}
+                        <img src="${product.image}" alt="${product.name}" 
+                             style="width: 100%; height: 200px; object-fit: cover;"
+                             loading="lazy">
+                        <div style="padding: 1.5rem;">
+                            <small style="color: var(--accent); display: block; margin-bottom: 5px;">
+                                ${product.category}
+                            </small>
+                            <h4 style="color: var(--light); margin-bottom: 10px;">${product.name}</h4>
+                            <p style="color: var(--success); font-size: 1.3rem; font-weight: bold;">$${product.price}</p>
+                            <button class="btn btn-primary" onclick="addToFeaturedCart('${product.name}')" 
+                                    style="width: 100%; margin-top: 10px;">
+                                <i class="fas fa-cart-plus"></i> Ajouter au panier
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        }
+
+        // ================= GESTION DU MENU AMÉLIORÉE =================
+        function openDrawer() {
+            document.getElementById('drawerMenu').classList.add('active');
+            document.getElementById('hamburgerMenu').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('drawerMenu').focus();
+        }
+
+        function closeDrawer() {
+            document.getElementById('drawerMenu').classList.remove('active');
+            document.getElementById('hamburgerMenu').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.getElementById('hamburgerMenu').focus();
+        }
+
+        // ================= ADMINISTRATION AMÉLIORÉE =================
+        function openAdminPanel() {
+            document.getElementById('adminOverlay').classList.add('active');
+            updateAdminDashboard();
+            document.getElementById('adminOverlay').focus();
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminOverlay').classList.remove('active');
+            saveConfig();
+        }
+
+        function openConfigPanel() {
+            document.getElementById('configOverlay').classList.add('active');
+            document.getElementById('adminPasswordInput').focus();
+        }
+
+        function closeConfigPanel() {
+            document.getElementById('configOverlay').classList.remove('active');
+            document.getElementById('adminPasswordInput').value = '';
+        }
+
+        function verifyAdminPassword() {
+            const password = document.getElementById('adminPasswordInput').value;
+            if (password === SITE_CONFIG.adminPassword) {
+                closeConfigPanel();
+                openAdminPanel();
+                showToast('Connexion administrateur réussie', 'success');
+            } else {
+                showToast('Mot de passe incorrect', 'error');
+                document.getElementById('adminPasswordInput').value = '';
+                document.getElementById('adminPasswordInput').focus();
+            }
+        }
+
+        function switchAdminTab(tabName) {
+            // Masquer tous les onglets
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            });
+            
+            // Afficher l'onglet sélectionné
+            const selectedTab = document.getElementById(`tab-${tabName}`);
+            const selectedButton = event.currentTarget;
+            
+            if (selectedTab && selectedButton) {
+                selectedTab.classList.add('active');
+                selectedButton.classList.add('active');
+                selectedButton.setAttribute('aria-selected', 'true');
+                selectedTab.focus();
+            }
+        }
+
+        function updateAdminDashboard() {
+            if (document.getElementById('adminOnlineUsers')) {
+                document.getElementById('adminOnlineUsers').textContent = SITE_CONFIG.onlineUsers;
+                document.getElementById('adminTotalViews').textContent = SITE_CONFIG.totalVisits;
+                document.getElementById('adminTodayOrders').textContent = Math.floor(Math.random() * 20);
+            }
+        }
+
+        // ================= CARROUSEL AMÉLIORÉ =================
+        function initCarousel() {
+            const slides = [
+                {
+                    title: "NOUVELLE COLLECTION 2024",
+                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    description: "Technologie & Mode à Kolwezi",
+                    buttonText: "Voir le Catalogue"
+                },
+                {
+                    title: "LIVRAISON RAPIDE",
+                    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    description: "Partout en RDC",
+                    buttonText: "Commander Maintenant"
+                },
+                {
+                    title: "PAIEMENT SÉCURISÉ",
+                    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    description: "Mobile Money & IllicoCash",
+                    buttonText: "Modes de Paiement"
+                }
+            ];
+            
+            const carousel = document.getElementById('carousel');
+            if (carousel) {
+                slides.forEach((slide, index) => {
+                    const slideDiv = document.createElement('div');
+                    slideDiv.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+                    slideDiv.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${slide.image}')`;
+                    slideDiv.innerHTML = `
+                        <div class="slide-content">
+                            <h2 class="slide-title">${slide.title}</h2>
+                            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem;">
+                                ${slide.description}
+                            </p>
+                            <button class="btn btn-primary" onclick="handleCarouselButton(${index})">
+                                <i class="fas fa-shopping-bag"></i> ${slide.buttonText}
+                            </button>
+                        </div>
+                    `;
+                    carousel.appendChild(slideDiv);
+                });
+                
+                // Rotation automatique
+                let currentSlide = 0;
+                const slideInterval = setInterval(() => {
+                    const slides = document.querySelectorAll('.carousel-slide');
+                    if (slides.length > 0) {
+                        slides[currentSlide].classList.remove('active');
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        slides[currentSlide].classList.add('active');
+                    }
+                }, 5000);
+                
+                // Stocker l'interval pour pouvoir l'arrêter si nécessaire
+                window.carouselInterval = slideInterval;
+            }
+        }
+
+        function handleCarouselButton(slideIndex) {
+            const actions = [
+                () => showCatalog(),
+                () => showOrderInfo(),
+                () => alert("💳 MODES DE PAIEMENT\n\n• Mobile Money (Vodacom, Airtel)\n• IllicoCash\n• Paiement à la livraison\n• Transfert bancaire\n\nToutes les transactions sont sécurisées.")
+            ];
+            
+            if (actions[slideIndex]) {
+                actions[slideIndex]();
+            }
+        }
+
+        // ================= UTILITAIRES AMÉLIORÉS =================
+        function showToast(message, type = 'info') {
+            toastr.options = {
+                positionClass: 'toast-top-right',
+                progressBar: true,
+                timeOut: 3000,
+                closeButton: true,
+                newestOnTop: true,
+                preventDuplicates: true
+            };
+            
+            const icons = {
+                success: 'fas fa-check-circle',
+                error: 'fas fa-exclamation-circle',
+                warning: 'fas fa-exclamation-triangle',
+                info: 'fas fa-info-circle'
+            };
+            
+            toastr[type](`<i class="${icons[type]}" style="margin-right: 8px;"></i>${message}`);
+        }
+
+        function checkFirstVisit() {
+            const firstVisit = !localStorage.getItem('lbk_first_visit');
+            if (firstVisit) {
+                setTimeout(() => {
+                    showToast('👋 Bienvenue sur LB-K SMART ! Profitez de nos meilleures offres.', 'success');
+                    localStorage.setItem('lbk_first_visit', 'true');
+                }, 1500);
+            }
+        }
+
+        function setupEventListeners() {
+            // Menu hamburger
+            const hamburger = document.getElementById('hamburgerMenu');
+            if (hamburger) {
+                hamburger.addEventListener('click', toggleDrawer);
+                hamburger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleDrawer();
+                    }
+                });
+            }
+
+            // Recherche avec debounce
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                let searchTimeout;
+                searchInput.addEventListener('input', function(e) {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        const searchTerm = e.target.value.toLowerCase().trim();
+                        if (searchTerm.length > 2) {
+                            performSearch(searchTerm);
+                        }
+                    }, 500);
+                });
+                
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch(e.target.value.toLowerCase().trim());
+                    }
+                });
+            }
+
+            // Touches clavier améliorées
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.altKey && e.key === 'a') {
+                    e.preventDefault();
+                    openConfigPanel();
+                }
+                if (e.key === 'Escape') {
+                    closeDrawer();
+                    closeAdminPanel();
+                    closeConfigPanel();
+                }
+                if (e.key === 'ArrowLeft' && document.getElementById('adminOverlay').classList.contains('active')) {
+                    navigateAdminTabs(-1);
+                }
+                if (e.key === 'ArrowRight' && document.getElementById('adminOverlay').classList.contains('active')) {
+                    navigateAdminTabs(1);
+                }
+            });
+
+            // Clic en dehors du menu pour le fermer
+            document.addEventListener('click', (e) => {
+                const drawer = document.getElementById('drawerMenu');
+                const hamburger = document.getElementById('hamburgerMenu');
+                
+                if (drawer.classList.contains('active') && 
+                    !drawer.contains(e.target) && 
+                    !hamburger.contains(e.target)) {
+                    closeDrawer();
+                }
+            });
+        }
+
+        function setupAccessibility() {
+            // Ajouter les rôles ARIA manquants
+            const buttons = document.querySelectorAll('button, [role="button"]');
+            buttons.forEach(btn => {
+                if (!btn.getAttribute('tabindex')) {
+                    btn.setAttribute('tabindex', '0');
+                }
+                
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+            });
+
+            // Améliorer la navigation au clavier
+            document.querySelectorAll('.menu-item, .featured-card, .social-card').forEach(item => {
+                item.setAttribute('tabindex', '0');
+            });
+        }
+
+        function toggleDrawer() {
+            if (document.getElementById('drawerMenu').classList.contains('active')) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        }
+
+        function performSearch(term) {
+            if (term.length === 0) return;
+            
+            const results = [
+                "Électronique",
+                "Mode & Vêtements",
+                "Produits Pharmaceutiques",
+                "Accessoires",
+                "Cosmétiques"
+            ].filter(item => item.toLowerCase().includes(term));
+            
+            if (results.length > 0) {
+                showToast(`Résultats pour "${term}": ${results.join(', ')}`, 'info');
+            } else {
+                showToast(`Aucun résultat pour "${term}"`, 'warning');
+            }
+        }
+
+        function navigateAdminTabs(direction) {
+            const tabs = Array.from(document.querySelectorAll('.admin-tab'));
+            const activeTab = document.querySelector('.admin-tab.active');
+            let currentIndex = tabs.indexOf(activeTab);
+            
+            if (currentIndex !== -1) {
+                const newIndex = (currentIndex + direction + tabs.length) % tabs.length;
+                tabs[newIndex].click();
+            }
+        }
+
+        // ================= FONCTIONS DU SITE AMÉLIORÉES =================
+        function openWhatsApp() {
+            const phone = "+243822937321";
+            const message = encodeURIComponent("Bonjour LB-K SMART, je souhaite obtenir des informations sur vos produits.");
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank', 'noopener,noreferrer');
+        }
+
+        function openAIAssistant() {
+            const question = prompt("🤖 Assistant IA LB-K SMART\n\nPosez votre question sur nos produits ou services:");
+            if (question) {
+                const responses = [
+                    "Nos produits sont disponibles sur commande avec livraison dans toute la RDC.",
+                    "Nous acceptons Mobile Money et IllicoCash pour le paiement.",
+                    "Les délais de livraison varient de 10 à 21 jours selon le mode de transport.",
+                    "Pour commander, envoyez-nous l'image du modèle, la marque, la quantité et la taille souhaitée.",
+                    "Nous proposons des produits de marques chinoises et européennes de qualité.",
+                    "La livraison est gratuite pour les commandes supérieures à 400kg.",
+                    "Nous proposons des consultations sur rendez-vous pour vos besoins spécifiques."
+                ];
+                
+                // Simuler un délai de traitement
+                setTimeout(() => {
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    alert(`🤖 Assistant IA:\n\n"${question}"\n\n💡 ${randomResponse}\n\n📞 Pour plus d'informations: +243 82 293 7321`);
+                }, 1000);
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Fonctions d'information améliorées
+        function showContactInfo() {
+            closeDrawer();
+            const contactInfo = `📞 CONTACT LB-K SMART
+
+📍 Adresse: Site Jolie RVA, Manika, Kolwezi, RDC
+📱 WhatsApp: +243 82 293 7321
+🕒 Horaires: Lundi-Samedi 9h-17h
+📧 Email: contact@lbksmart.com
+📅 Consultations sur rendez-vous uniquement
+
+🌐 Site: www.lbksmart.com
+💼 Professionnalisme garanti`;
+            
+            if (confirm(`${contactInfo}\n\nSouhaitez-vous copier le numéro de téléphone?`)) {
+                navigator.clipboard.writeText("+243822937321");
+                showToast('Numéro copié dans le presse-papier', 'success');
+            }
+        }
+
+        function showOrderInfo() {
+            closeDrawer();
+            alert(`🛒 POUR COMMANDER
+
+1. 📷 Image du modèle
+2. 🏷️ Marque (si connue)
+3. 🔢 Quantité et taille
+4. 🌍 Marques chinoises et européennes
+
+🚚 Livraison à domicile
+🤝 Service professionnel
+💵 Paiement Mobile Money / IllicoCash / À la livraison
+
+📞 Contactez-nous: +243 82 293 7321`);
+        }
+
+        function showDeliveryInfo() {
+            closeDrawer();
+            alert(`🚚 LIVRAISON LB-K SMART
+
+📦 Petits colis: Prix selon distance
+🚚 Gros colis (>400kg): GRATUIT
+💰 Paiement: Mobile Money / IllicoCash / À la livraison
+⏱️ Service professionnel garantie
+📅 Délais: 10-21 jours (aérien) / 30-45 jours (maritime)
+
+📍 Zone de livraison: Toute la RDC
+🛡️ Emballage sécurisé`);
+        }
+
+        function showPricingInfo(type) {
+            closeDrawer();
+            if (type === 'air') {
+                alert(`✈️ TARIFS TRANSPORT AÉRIEN
+
+📦 Colis normal (habillement, accessoires):
+   Prix: 28$/kg
+   Délai: 15-21 jours
+
+🚀 Colis express (électroniques, liquides):
+   Prix: 30$/kg
+   Délai: 10-15 jours
+
+📱 Téléphones/tablettes: 30$/pièce
+💻 Ordinateurs: 50$/pièce
+
+⚠️ Batteries: Transport par bateau uniquement
+💡 Contactez-nous pour un devis personnalisé`);
+            } else {
+                alert(`⛵ TARIFS TRANSPORT MARITIME
+
+📦 1 CBM: 500$
+⚖️ 1 Tonne: 600$
+
+🔋 Batteries transportées uniquement par bateau
+📅 Délai: 30-45 jours
+🚢 Assurance incluse
+
+💡 Idéal pour les grosses commandes
+📞 Devis gratuit sur demande`);
+            }
+        }
+
+        function showCatalog() {
+            const categories = [
+                "📱 Électronique (Téléphones, Ordinateurs, Tablettes)",
+                "👗 Mode (Vêtements, Chaussures, Accessoires)",
+                "💊 Produits Pharmaceutiques",
+                "💄 Cosmétiques & Beauté",
+                "🏠 Articles Ménagers",
+                "🎮 Jeux & Loisirs"
+            ];
+            
+            alert(`📚 CATALOGUE LB-K SMART\n\n${categories.join('\n')}\n\n📞 Pour voir nos produits: +243 82 293 7321\n📧 Demande de catalogue: contact@lbksmart.com`);
+        }
+
+        // Mettre à jour les utilisateurs en ligne toutes les 30 secondes
+        setInterval(updateOnlineUsers, 30000);
+
+        // Précharger les images importantes
+        window.addEventListener('load', () => {
+            const images = [
+                "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+            ];
+            
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+    </script>
+</body>
+</html>
