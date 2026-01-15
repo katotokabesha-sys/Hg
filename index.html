@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LB-K SMART - Votre boutique intelligente à Kolwezi">
+    <title>LB-K SMART | Boutique Intelligence</title>
+    
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#7b00ff">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 🔝 Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <button class="hamburger" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="logo">LB-K SMART</h1>
+                <span class="tagline">Boutique Intelligence</span>
+            </div>
+            
+            <nav class="desktop-nav">
+                <a href="#home" class="nav-link active">🏠 Accueil</a>
+                <a href="#betty" class="nav-link">👩 Betty Kabey</a>
+                <a href="#laurent" class="nav-link">👨 Laurent Kabesha</a>
+                <a href="#catalogue" class="nav-link">📦 Catalogue</a>
+                <a href="#contact" class="nav-link">📞 Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="cart-btn" id="cartButton">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 📱 Menu Mobile -->
+    <div class="drawer-menu" id="drawerMenu">
+        <div class="drawer-header">
+            <h3>LB-K SMART</h3>
+            <button class="drawer-close" id="drawerClose">✕</button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="#home" class="mobile-nav-link">🏠 Accueil</a>
+            <a href="#betty" class="mobile-nav-link">👩 Betty Kabey Smart</a>
+            <a href="#laurent" class="mobile-nav-link">👨 Laurent Kabesha Smart</a>
+            <a href="#catalogue" class="mobile-nav-link">📦 Catalogue Complet</a>
+            <a href="#livraison" class="mobile-nav-link">🚚 Livraison</a>
+            <a href="#contact" class="mobile-nav-link">📞 Contact & WhatsApp</a>
+            <a href="#admin" class="mobile-nav-link" id="adminLink">🔐 Administration</a>
+        </nav>
+        <div class="drawer-footer">
+            <p>📍 Kolwezi, RDC</p>
+            <p>📞 +243 822 937 321 / +243 971 455 335</p>
+        </div>
+    </div>
+
+    <!-- 🏠 Section Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 class="hero-title">VOTRE BOUTIQUE INTELLIGENTE À KOLWEZI</h2>
+            <p class="hero-subtitle">Électronique • Électrique • Vêtements • Cosmétiques • Produits pharmaceutiques</p>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="scrollToSection('catalogue')">
+                    🛒 Commander Maintenant
+                </button>
+                <button class="btn-secondary" onclick="openWhatsApp('+243822937321')">
+                    💬 WhatsApp Direct
+                </button>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Boutiques</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Produits</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 👩 Section Betty -->
+    <section class="boutique-section" id="betty">
+        <div class="section-header">
+            <h2 class="section-title">👩 BETTY KABEY SMART</h2>
+            <p class="section-subtitle">Vêtements féminins • Cosmétiques • Accessoires</p>
+        </div>
+        <div class="products-grid" id="bettyProducts">
+            <!-- Produits chargés dynamiquement -->
+        </div>
+        <div class="section-footer">
+            <button class="btn-whatsapp" onclick="openWhatsAppOrder('betty')">
+                💬 Commander sur WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- 👨 Section Laurent -->
+    <section class="boutique-section" id="laurent">
+        <div class="section-header">
+            <h2 class="section-title">👨 LAURENT KABESHA SMART</h2>
+            <p class="section-subtitle">Électronique • Électrique • Téléphones • Accessoires</p>
+        </div>
+        <div class="products-grid" id="laurentProducts">
+            <!-- Produits chargés dynamiquement -->
+        </div>
+        <div class="section-footer">
+            <button class="btn-whatsapp" onclick="openWhatsAppOrder('laurent')">
+                💬 Commander sur WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- 📦 Catalogue Complet -->
+    <section class="catalogue-section" id="catalogue">
+        <div class="section-header">
+            <h2 class="section-title">📦 CATALOGUE COMPLET</h2>
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">Tous</button>
+                <button class="category-btn" data-category="electronique">Électronique</button>
+                <button class="category-btn" data-category="electrique">Électrique</button>
+                <button class="category-btn" data-category="vetements">Vêtements</button>
+                <button class="category-btn" data-category="cosmetiques">Cosmétiques</button>
+                <button class="category-btn" data-category="pharmaceutique">Pharmaceutique</button>
+            </div>
+        </div>
+        <div class="catalogue-grid" id="catalogueProducts">
+            <!-- Produits chargés dynamiquement -->
+        </div>
+    </section>
+
+    <!-- 🛒 Panier Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🛒 Votre Panier</h3>
+                <button class="modal-close" onclick="closeCart()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems">
+                    <!-- Items du panier -->
+                </div>
+                <div class="cart-total">
+                    <strong>Total: </strong>
+                    <span id="cartTotal">0</span> FCFA
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeCart()">Continuer les achats</button>
+                <button class="btn-primary" onclick="openOrderForm()">Finaliser la commande</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📋 Formulaire de Commande -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📋 Finaliser la Commande</h3>
+                <button class="modal-close" onclick="closeOrderForm()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>📞 Votre numéro WhatsApp</label>
+                        <input type="tel" id="customerPhone" placeholder="+243..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>👤 Votre nom complet</label>
+                        <input type="text" id="customerName" placeholder="Nom et prénom" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>📍 Adresse de livraison</label>
+                        <textarea id="customerAddress" rows="3" placeholder="Avenue, Quartier, Numéro..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🏙️ Ville</label>
+                        <select id="customerCity">
+                            <option value="Kolwezi">Kolwezi</option>
+                            <option value="Lubumbashi">Lubumbashi</option>
+                            <option value="Kinshasa">Kinshasa</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>📦 Mode de livraison</label>
+                        <select id="deliveryType">
+                            <option value="air">✈️ Aérien (15-21 jours)</option>
+                            <option value="sea">⛵ Maritime (30-45 jours)</option>
+                            <option value="home">🚚 Livraison à domicile</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>💳 Mode de paiement</label>
+                        <select id="paymentMethod">
+                            <option value="mobile_money">Mobile Money</option>
+                            <option value="ilicocash">IllicoCash</option>
+                            <option value="cash">Espèces à la livraison</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="processOrder()">
+                    💬 Envoyer sur WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔐 Panel Admin -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content admin-modal">
+            <div class="modal-header">
+                <h3>🔐 Administration LB-K SMART</h3>
+                <button class="modal-close" onclick="closeAdmin()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="admin-tabs">
+                    <button class="admin-tab active" data-tab="products">📦 Produits</button>
+                    <button class="admin-tab" data-tab="orders">📋 Commandes</button>
+                    <button class="admin-tab" data-tab="settings">⚙️ Paramètres</button>
+                </div>
+                
+                <div class="admin-content" id="adminContent">
+                    <!-- Contenu admin chargé dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📞 Section Contact -->
+    <section class="contact-section" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">📞 CONTACT & COMMANDES</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h4>👨 Laurent Kabesha</h4>
+                <p>📱 +243 822 937 321</p>
+                <button class="btn-whatsapp" onclick="openWhatsApp('+243822937321')">
+                    💬 WhatsApp Laurent
+                </button>
+            </div>
+            <div class="contact-card">
+                <h4>👩 Betty Kabey</h4>
+                <p>📱 +243 971 455 335</p>
+                <button class="btn-whatsapp" onclick="openWhatsApp('+243971455335')">
+                    💬 WhatsApp Betty
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🚚 Section Livraison -->
+    <section class="delivery-section" id="livraison">
+        <div class="section-header">
+            <h2 class="section-title">🚚 MODES DE LIVRAISON</h2>
+        </div>
+        <div class="delivery-grid">
+            <div class="delivery-card">
+                <div class="delivery-icon">✈️</div>
+                <h4>Aérien</h4>
+                <p>15-21 jours</p>
+                <small>Pour commandes urgentes</small>
+            </div>
+            <div class="delivery-card">
+                <div class="delivery-icon">⛵</div>
+                <h4>Maritime</h4>
+                <p>30-45 jours</p>
+                <small>Économique pour gros volumes</small>
+            </div>
+            <div class="delivery-card">
+                <div class="delivery-icon">🚚</div>
+                <h4>À domicile</h4>
+                <p>Selon distance</p>
+                <small>Dans Kolwezi et environs</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🏁 Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4>LB-K SMART</h4>
+                <p>Votre boutique intelligente à Kolwezi</p>
+                <p>📍 Kolwezi, République Démocratique du Congo</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Boutiques</h4>
+                <p>👨 Laurent Kabesha Smart</p>
+                <p>👩 Betty Kabey Smart</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>📞 +243 822 937 321</p>
+                <p>📞 +243 971 455 335</p>
+                <p>🕐 24/7 sur WhatsApp</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 LB-K SMART Boutique Intelligence. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- 🎨 Boutons Flottants -->
+    <div class="floating-buttons">
+        <button class="float-btn" id="floatWhatsApp" onclick="openWhatsAppOrder()">
+            💬
+            <span class="float-label">Commander</span>
+        </button>
+        <button class="float-btn" id="floatCart" onclick="openCart()">
+            🛒
+            <span class="float-label">Panier</span>
+            <span class="float-badge" id="cartBadge">0</span>
+        </button>
+        <button class="float-btn" id="floatTheme" onclick="toggleTheme()">
+            🌙
+            <span class="float-label">Thème</span>
+        </button>
+        <button class="float-btn" id="floatAdmin" onclick="openAdmin()">
+            🔐
+            <span class="float-label">Admin</span>
+        </button>
+    </div>
+
+    <!-- 📊 Console Dev (optionnel) -->
+    <div id="devConsole" style="display: none;"></div>
+
+    <!-- 🔧 Scripts -->
+    <script src="script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed:', err));
+        }
+    </script>
+</body>
+</html>
