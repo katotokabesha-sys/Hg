@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Veste VIP Homme - Mode Betty",
+    "category": "habillement",
+    "price_usd": 30,
+    "price_fc": 84000,
+    "image": "assets/images/placeholder.jpg",
+    "owner": "Betty Kabey",
+    "description": "Style moderne et tendance. Disponible en plusieurs tailles.",
+    "whatsapp": "+243971455335"
+  },
+  {
+    "id": 2,
+    "name": "Power Bank Haute Capacité - Laurent",
+    "category": "électronique",
+    "price_usd": 25,
+    "price_fc": 70000,
+    "image": "assets/images/placeholder.jpg",
+    "owner": "Laurent Kabesha",
+    "description": "Charge rapide USB/Type-C. Idéal pour les voyages.",
+    "whatsapp": "+243822937321"
+  },
+  {
+    "id": 3,
+    "name": "Parfum Automobile - Laurent",
+    "category": "auto-pièces",
+    "price_usd": 10,
+    "price_fc": 28000,
+    "image": "assets/images/placeholder.jpg",
+    "owner": "Laurent Kabesha",
+    "description": "Senteur longue durée pour tout type de véhicule.",
+    "whatsapp": "+243822937321"
+  },
+  {
+    "id": 4,
+    "name": "Lait Corporel Nourrissant - Betty",
+    "category": "cosmétiques",
+    "price_usd": 15,
+    "price_fc": 42000,
+    "image": "assets/images/placeholder.jpg",
+    "owner": "Betty Kabey",
+    "description": "Hydratation intense. Produit sélectionné pour sa qualité.",
+    "whatsapp": "+243971455335"
+  },
+  {
+    "id": 5,
+    "name": "Kit Dentaire Complet - Laurent",
+    "category": "pharmacie",
+    "price_usd": 8,
+    "price_fc": 22400,
+    "image": "assets/images/placeholder.jpg",
+    "owner": "Laurent Kabesha",
+    "description": "Produit pharmaceutique de haute qualité.",
+    "whatsapp": "+243822937321"
+  }
+]
