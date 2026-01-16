@@ -1410,3 +1410,59 @@ a:hover {
         padding: 0;
     }
 }
+
+/* --- UI MAGIC SYSTEM ADMIN --- */
+.glass-panel {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background: rgba(10, 15, 30, 0.98); /* Fond sombre profond */
+    backdrop-filter: blur(25px); /* Effet flou magique */
+    border: 2px solid #00d4ff; /* Bordure néon bleu */
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+    border-radius: 30px;
+    z-index: 10000;
+    display: none; 
+    padding: 25px;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-y: auto;
+}
+
+.admin-header {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.magic-btn {
+    background: linear-gradient(90deg, #1a73e8, #00d4ff);
+    color: white;
+    border: none;
+    padding: 18px;
+    margin: 10px 0;
+    border-radius: 15px;
+    width: 100%;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.magic-btn:active { transform: scale(0.95); }
+
+/* Icônes et Textes */
+.edit-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #1a73e8;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
