@@ -1,5 +1,14 @@
-// Dans la fonction loadInitialData(), remplacez :
-image: "assets/images/placeholder.jpg"
+.logo-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
 
-// Par ceci pour utiliser des placeholders en ligne :
-image: `https://via.placeholder.com/500x500/1a73e8/ffffff?text=${encodeURIComponent(product.name.substring(0,20))}`
+/* Gardez le fallback pour l'emoji */
+.logo-icon {
+    display: none; /* Cache l'emoji si image présente */
+}
+
+.logo-image:not([src]) + .logo-icon {
+    display: flex; /* Affiche l'emoji si image manquante */
+}
