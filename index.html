@@ -760,5 +760,24 @@ window.app = new LBKSmartApp();</textarea>
         };
     </script>
     <script src="assets/js/main.js"></script>
+<div id="admin-trigger" onclick="openAdmin()">✨</div>
+
+<div id="admin-panel" class="glass-panel">
+    <div class="admin-header">
+        <img src="assets/images/logo.png" alt="Logo" class="admin-logo">
+        <h3>PANNEAU DE CONTRÔLE 2026</h3>
+        <button onclick="closeAdmin()" class="close-btn">×</button>
+    </div>
+
+    <div class="admin-menu">
+        <button class="magic-btn" onclick="showSection('stats')">📊 STATISTIQUES</button>
+        <button class="magic-btn" onclick="showSection('products')">🛍️ GESTION PRODUITS</button>
+        <button class="magic-btn" onclick="showSection('logistic')">✈️ TARIFS LOGISTIQUE</button>
+        <button class="magic-btn" onclick="showSection('settings')">⚙️ RÉGLAGES BOUTIQUE</button>
+    </div>
+
+    <div id="admin-content">
+        </div>
+</div>
 </body>
 </html>
